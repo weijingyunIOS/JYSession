@@ -1,0 +1,15 @@
+PODS:
+  - FMDB (2.6.2):
+    - FMDB/standard (= 2.6.2)
+  - FMDB/standard (2.6.2)
+  - JYDataBase (1.0.0):
+    - FMDB (~> 2.6.2)
+
+DEPENDENCIES:
+  - JYDataBase (~> 1.0.0)
+
+SPEC CHECKSUMS:
+  FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
+  JYDataBase: 1a9ed1d5d61e76f65df81e12e04915301e4e9bdf
+
+COCOAPODS: 0.39.0

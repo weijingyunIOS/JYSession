@@ -17,6 +17,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    NSURL *url = [NSURL URLWithString:@"aaa"];
+    NSURLSession *session = [NSURLSession sharedSession];
+//    NSURLSessionDownloadTask *task = [session downloadTaskWithResumeData:<#(nonnull NSData *)#> completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+//        
+//    }];
 }
 
 - (void)didReceiveMemoryWarning {
