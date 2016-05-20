@@ -96,11 +96,13 @@ typedef NS_ENUM(NSUInteger, EDownloadType) {
 }
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error{
-    if (error == nil) {
-        [self notifySuccess];
-    }else{
-        [self notifyFailWithError:error];
-    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (error == nil) {
+            [self notifySuccess];
+        }else{
+            [self notifyFailWithError:error];
+        }
+    });
 }
 
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data{

@@ -23,7 +23,8 @@
     if (aContent.urlString.length <= 0) {
         return;
     }
-    JYDownload *download = self.downloadDicM[[aContent.urlString MD5String]];
+    NSString *key = [aContent.urlString MD5String];
+    JYDownload *download = self.downloadDicM[key];
     if (download == nil) {
         download = [[JYDownload alloc] init];
         download.aContent = aContent;
@@ -32,12 +33,44 @@
         [self setDownload:download forUrlString:aContent.urlString];
         [download startDownload];
     }
+    
+    __weak typeof(JYDownloadManager*)weakSelf = self;
+    download.successBlock = ^(JYDownload *aCmd){
+//        [self upState:EDownLoadstateFinish downLoadUrl:aUrl];
+        if (aComplete) {
+            aComplete(aCmd.completeFilePath,nil);
+        }
+        [weakSelf.downloadDicM removeObjectForKey:key];
+    };
+    
+    download.failBlock = ^(JYDownload*aCmd, NSError*aError){
+//        if ([self getDownLoadstateFor:aUrl] == EDownLoadstateGoing) {
+//            [self upState:EDownLoadstateFaile downLoadUrl:aUrl];
+//        }else {
+//            
+//            aError = [NSError errorWithDomain:@"暂停下载" code:0 userInfo:@{@"NSLocalizedDescription" : @"暂停下载"}];
+//        }
+        
+        if (aComplete) {
+            aComplete(nil,aError);
+        }
+        [self.downloadDicM removeObjectForKey:key];
+    };
+    
+    download.downloadProgress = ^(int64_t completeBytes, int64_t totalBytes){
+        if (aProgress) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                aProgress(completeBytes,totalBytes);
+            });
+        }
+    };
 }
 
 - (void)cancelUrlString:(NSString *)urlString{
     NSString *key = [urlString MD5String];
      JYDownload *download = self.downloadDicM[key];
     [download cancel];
+    [self.downloadDicM removeObjectForKey:key];
 }
 
 #pragma mark - NSURLSessionDelegate
@@ -51,7 +84,6 @@
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
     JYDownload *download = self.downloadDicM[task.taskDescription];
     [download URLSession:session task:task didCompleteWithError:error];
-    [self.downloadDicM removeObjectForKey:task.taskDescription];
 }
 
 #pragma mark - NSURLSessionDataDelegate
