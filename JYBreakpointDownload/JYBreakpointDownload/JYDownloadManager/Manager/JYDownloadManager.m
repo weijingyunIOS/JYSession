@@ -33,10 +33,10 @@
         [self setDownload:download forUrlString:aContent.urlString];
         [download startDownload];
     }
-    
+    aContent.downLoadState = EDownloadStateGoing;
     __weak typeof(JYDownloadManager*)weakSelf = self;
     download.successBlock = ^(JYDownload *aCmd){
-//        [self upState:EDownLoadstateFinish downLoadUrl:aUrl];
+        aContent.downLoadState = EDownloadStateFinish;
         if (aComplete) {
             aComplete(aCmd.aContent,nil);
         }
@@ -44,12 +44,12 @@
     };
     
     download.failBlock = ^(JYDownload*aCmd, NSError*aError){
-//        if ([self getDownLoadstateFor:aUrl] == EDownLoadstateGoing) {
-//            [self upState:EDownLoadstateFaile downLoadUrl:aUrl];
-//        }else {
-//            
-//            aError = [NSError errorWithDomain:@"暂停下载" code:0 userInfo:@{@"NSLocalizedDescription" : @"暂停下载"}];
-//        }
+        if (aError.code != -999) {
+            aContent.downLoadState = EDownloadStateFaile;
+        }else {
+            aContent.downLoadState = EDownloadStatePause;
+            aError = [NSError errorWithDomain:@"暂停下载" code:0 userInfo:@{@"NSLocalizedDescription" : @"暂停下载"}];
+        }
         
         if (aComplete) {
             aComplete(nil,aError);
@@ -70,7 +70,6 @@
     NSString *key = [urlString MD5String];
      JYDownload *download = self.downloadDicM[key];
     [download cancel];
-    [self.downloadDicM removeObjectForKey:key];
 }
 
 #pragma mark - NSURLSessionDelegate

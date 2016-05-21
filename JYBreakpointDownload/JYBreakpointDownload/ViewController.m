@@ -42,7 +42,8 @@
     [self.download downloadContent:aContent onProgress:^(int64_t completeBytes, int64_t totalBytes) {
         
     } Complete:^(JYDownloadContent* aContent, NSError *aError) {
-        
+        NSLog(@"%@",aContent.finishPath);
+        NSLog(@"%@",aError);
     }];
 }
 
@@ -53,6 +54,7 @@
         
     } Complete:^(JYDownloadContent* aContent, NSError *aError) {
         NSLog(@"%@",aContent.finishPath);
+        NSLog(@"%@",aError);
     }];
 }
 

@@ -127,7 +127,7 @@ typedef NS_ENUM(NSUInteger, EDownloadType) {
 
 #pragma mark - 失败成功回调
 - (void)notifySuccess{
-    NSLog(@"download object success! %@",[NSThread currentThread]);
+    NSLog(@"download object success!");
     [self moveFile];
     if (self.successBlock) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -137,7 +137,7 @@ typedef NS_ENUM(NSUInteger, EDownloadType) {
 }
 
 - (void)notifyFailWithError:(NSError *)aError{
-    NSLog(@"head object failed, error: %@ %@",[NSThread currentThread],aError);
+    NSLog(@"head object failed %@",aError);
     if (self.failBlock) {
          dispatch_async(dispatch_get_main_queue(), ^{
              self.failBlock(self,aError);
@@ -200,7 +200,7 @@ typedef NS_ENUM(NSUInteger, EDownloadType) {
 - (NSString *)downloadFilePath{
     if (!_downloadFilePath) {
         _downloadFilePath = [JYFileManager getCachePathWith:[self.downloadPath stringByAppendingPathComponent:@"unfinished"] fileName:[self.aContent.urlString MD5String]];
-        NSLog(@"%@",_downloadFilePath);
+//        NSLog(@"%@",_downloadFilePath);
     }
     return _downloadFilePath;
 }
