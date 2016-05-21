@@ -21,7 +21,7 @@
 
 - (instancetype)init{
     if (self = [super init]) {
-        self.maxDownLoad = 1;
+        self.maxDownLoad = 3;
         self.downloadPath = @"downloadPath";
     }
     return self;

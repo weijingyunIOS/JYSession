@@ -20,9 +20,11 @@ typedef NS_ENUM(NSUInteger, EDownloadState) {
 
 @property (nonatomic, copy) NSString *urlString;
 @property (nonatomic, assign) EDownloadState downLoadState;
-@property (nonatomic, copy) NSString *relativePath;         // 下载完成后的相对地址
+@property (nonatomic, copy) NSString *relativePath;         // 下载完成后(或未完成)的相对地址
+@property (nonatomic, assign) long long serverFileSize;     // 服务器上文件总大小
 
-// 一下属性不保存数据库
-@property (nonatomic, copy, readonly) NSString *finishPath; // 下载完成后的实际地址
+// 以下下属性不保存数据库
+@property (nonatomic, copy, readonly) NSString *finishPath; // 下载完成后(或未完成)的实际地址
+@property (nonatomic, assign) long long currentFileSize;
 
 @end

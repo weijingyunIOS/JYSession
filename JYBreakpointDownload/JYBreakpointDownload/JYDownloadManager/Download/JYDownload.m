@@ -36,8 +36,9 @@ typedef NS_ENUM(NSUInteger, EDownloadType) {
     [self getFileHead:^(NSDictionary *headerFields) {
         
         long long length = [headerFields[@"Content-Length"] longLongValue];
+        weakSelf.aContent.serverFileSize = length;
         NSString *contentType = headerFields[@"Content-Type"];
-        self.fileType = [contentType deleteBeforeString:@"/"];
+        weakSelf.fileType = [contentType deleteBeforeString:@"/"];
         NSInteger type = [self needDownload:length];
         switch (type) {
             case EDownloadNone:
@@ -199,8 +200,10 @@ typedef NS_ENUM(NSUInteger, EDownloadType) {
 #pragma mark - 懒加载
 - (NSString *)downloadFilePath{
     if (!_downloadFilePath) {
-        _downloadFilePath = [JYFileManager getCachePathWith:[self.downloadPath stringByAppendingPathComponent:@"unfinished"] fileName:[self.aContent.urlString MD5String]];
-//        NSLog(@"%@",_downloadFilePath);
+        
+        NSString *fileName = [self.aContent.urlString MD5String];
+        _downloadFilePath = [JYFileManager getCachePathWith:[self.downloadPath stringByAppendingPathComponent:@"unfinished"] fileName:fileName];
+        self.aContent.relativePath = [NSString stringWithFormat:@"%@/unfinished/%@",self.downloadPath,fileName];
     }
     return _downloadFilePath;
 }

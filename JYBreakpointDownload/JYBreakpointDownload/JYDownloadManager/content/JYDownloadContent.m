@@ -15,6 +15,10 @@
     return [JYFileManager getCachePathWith:self.relativePath];
 }
 
+- (long long)currentFileSize{
+    return [JYFileManager getLengthForFilePath:self.finishPath];
+}
+
 - (void)dealloc{
     NSLog(@"%s",__func__);
 }
