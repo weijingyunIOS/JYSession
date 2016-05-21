@@ -21,7 +21,7 @@
 
 - (void)checkError:(FMDatabase *)aDb;
 - (id)checkEmpty:(id)aObject;
-- (id)checkVaule:(id)aVaule forKey:(NSString*)aKey;
+- (id)checkVaule:(id)aVaule forKey:(NSString*)aKey; // 查询出来的数据进行处理
 
 #pragma mark - 是否使用缓存默认使用 如果使用查找优先使用
 - (BOOL)enableCache;

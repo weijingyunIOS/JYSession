@@ -60,6 +60,15 @@
     };
 }
 
+- (JYQueryConditions * (^)(NSString *compare))notEqualTo{
+    return ^id(NSString *compare) {
+        NSMutableDictionary *dicM = self.conditions.lastObject;
+        dicM[kEqual] = @"!=";
+        dicM[kCompare] = compare;
+        return self;
+    };
+}
+
 - (JYQueryConditions * (^)(NSString *compare))greaterThanOrEqualTo{
     return ^id(NSString *compare) {
         NSMutableDictionary *dicM = self.conditions.lastObject;

@@ -10,9 +10,13 @@
 
 @interface JYFileManager : NSObject
 
-// 下载目录拼接 filePath
+// Cache目录拼接 filePath
 + (NSString*)getCachePathWith:(NSString*)filePath;
 + (NSString*)getCachePathWith:(NSString*)filePath fileName:(NSString*)fileName;
+
+// Document目录拼接 filePath
++ (NSString*)getDocumentPathWith:(NSString*)filePath;
++ (NSString*)getDocumentPathWith:(NSString*)filePath fileName:(NSString*)fileName;
 
 
 // 获取

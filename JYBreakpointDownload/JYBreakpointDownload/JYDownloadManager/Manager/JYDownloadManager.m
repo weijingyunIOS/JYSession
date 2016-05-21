@@ -9,6 +9,7 @@
 #import "JYDownloadManager.h"
 #import "JYDownload.h"
 #import "NSString+JYCategory.h"
+#import "JYNetWorkService.h"
 @interface JYDownloadManager()<NSURLSessionDelegate>
 
 @property (nonatomic, strong) NSURLSession *session;
@@ -51,11 +52,13 @@
         download.downloadPath = self.downloadPath;
         [self setDownload:download forUrlString:aContent.urlString];
         [download startDownload];
+        [[JYNetWorkService shared] insertDownloadContent:aContent];
     }
     aContent.downLoadState = EDownloadStateGoing;
     __weak typeof(JYDownloadManager*)weakSelf = self;
     download.successBlock = ^(JYDownload *aCmd){
         aContent.downLoadState = EDownloadStateFinish;
+        [[JYNetWorkService shared] insertDownloadContent:aContent];
         if (aComplete) {
             aComplete(aCmd.aContent,nil);
         }
@@ -70,6 +73,7 @@
             aError = [NSError errorWithDomain:@"暂停下载" code:0 userInfo:@{@"NSLocalizedDescription" : @"暂停下载"}];
         }
         
+        [[JYNetWorkService shared] insertDownloadContent:aContent];
         if (aComplete) {
             aComplete(nil,aError);
         }

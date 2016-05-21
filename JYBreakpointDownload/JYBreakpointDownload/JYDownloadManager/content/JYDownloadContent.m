@@ -9,6 +9,12 @@
 #import "JYDownloadContent.h"
 #import "JYFileManager.h"
 
+@interface JYDownloadContent()
+
+@property (nonatomic, assign) EDownloadType  downLoadType;  // 下载类型
+
+@end
+
 @implementation JYDownloadContent
 
 - (NSString *)finishPath{

@@ -17,6 +17,7 @@
 @property (nonatomic, strong, readonly) NSMutableArray<NSMutableDictionary*> *conditions;
 @property (nonatomic, copy, readonly) NSMutableString *orderStr;
 
+- (JYQueryConditions * (^)(NSString *compare))notEqualTo;
 - (JYQueryConditions * (^)(NSString *compare))equalTo;
 - (JYQueryConditions * (^)(NSString *compare))greaterThanOrEqualTo;
 - (JYQueryConditions * (^)(NSString *compare))lessThanOrEqualTo;

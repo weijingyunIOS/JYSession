@@ -17,7 +17,21 @@
 + (NSString*)getCachePathWith:(NSString*)filePath fileName:(NSString*)fileName{
     
     NSString *cachePath = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES).lastObject;
-    NSString *path = [cachePath stringByAppendingPathComponent:filePath];
+    return [self getRootPath:cachePath with:filePath fileName:fileName];
+}
+
++ (NSString*)getDocumentPathWith:(NSString*)filePath{
+    return [self getDocumentPathWith:filePath fileName:nil];
+}
+
++ (NSString*)getDocumentPathWith:(NSString*)filePath fileName:(NSString*)fileName{
+    NSString *documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject;
+    return [self getRootPath:documentPath with:filePath fileName:fileName];
+}
+
++ (NSString *)getRootPath:(NSString*)rootPath with:(NSString*)filePath fileName:(NSString*)fileName{
+    
+    NSString *path = [rootPath stringByAppendingPathComponent:filePath];
     // 如果路径不存在就创建
     NSFileManager* manager = [NSFileManager defaultManager];
     if (![manager fileExistsAtPath:path]) {

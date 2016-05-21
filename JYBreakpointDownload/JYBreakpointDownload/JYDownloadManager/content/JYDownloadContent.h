@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "JYNetWorkConfig.h"
 
 typedef NS_ENUM(NSUInteger, EDownloadState) {
     EDownloadStateWaiting, // 等待下载
@@ -18,7 +19,10 @@ typedef NS_ENUM(NSUInteger, EDownloadState) {
 
 @interface JYDownloadContent : NSObject
 
+@property (nonatomic, copy) NSString *contentID;            // 唯一标识 不能为空
 @property (nonatomic, copy) NSString *urlString;
+// EDownloadType 下载类型 由JYNetWorkService分配
+@property (nonatomic, assign, readonly) EDownloadType  downLoadType;
 @property (nonatomic, assign) EDownloadState downLoadState;
 @property (nonatomic, copy) NSString *relativePath;         // 下载完成后(或未完成)的相对地址
 @property (nonatomic, assign) long long serverFileSize;     // 服务器上文件总大小

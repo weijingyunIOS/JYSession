@@ -10,7 +10,7 @@
 #import "JYFileManager.h"
 #import "NSString+JYCategory.h"
 
-typedef NS_ENUM(NSUInteger, EDownloadType) {
+typedef NS_ENUM(NSUInteger, EDownloadFinishType) {
     EDownloadNone,    //重新下载
     EDownloadEnd,     //已下载完成
     EDownloadRange,   //断点下载
@@ -152,7 +152,7 @@ typedef NS_ENUM(NSUInteger, EDownloadType) {
 }
 
 #pragma mark - 下载状态判断
-- (EDownloadType)needDownload:(long long)length{
+- (EDownloadFinishType)needDownload:(long long)length{
     long long localLength = [self getLocalFileLength];
     
     if (localLength == 0) {

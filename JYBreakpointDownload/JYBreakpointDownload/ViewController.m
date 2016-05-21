@@ -39,6 +39,7 @@
 - (void)start1:(UIButton *)but{
     JYDownloadContent *aContent = [[JYDownloadContent alloc] init];
     aContent.urlString = @"http://static.meishubao.com/video/2016-05-18/mCah6DSkD5.mp4";
+    aContent.contentID = @"123";
     [self.download downloadContent:aContent onProgress:^(int64_t completeBytes, int64_t totalBytes) {
         
     } Complete:^(JYDownloadContent* aContent, NSError *aError) {
@@ -48,9 +49,10 @@
 }
 
 - (void)start2:(UIButton *)but{
-    JYDownloadContent *aContent1 = [[JYDownloadContent alloc] init];
-    aContent1.urlString = @"http://192.168.1.126/resources/HHHorizontalPagingView.zip.1";
-    [self.download downloadContent:aContent1 onProgress:^(int64_t completeBytes, int64_t totalBytes) {
+    JYDownloadContent *aContent = [[JYDownloadContent alloc] init];
+    aContent.contentID = @"456";
+    aContent.urlString = @"http://192.168.1.126/resources/HHHorizontalPagingView.zip.1";
+    [self.download downloadContent:aContent onProgress:^(int64_t completeBytes, int64_t totalBytes) {
         
     } Complete:^(JYDownloadContent* aContent, NSError *aError) {
         NSLog(@"%@",aContent.finishPath);
