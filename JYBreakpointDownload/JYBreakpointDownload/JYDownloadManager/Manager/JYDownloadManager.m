@@ -11,25 +11,44 @@
 #import "NSString+JYCategory.h"
 @interface JYDownloadManager()<NSURLSessionDelegate>
 
-@property (nonatomic, copy) NSString *downloadPath; // 存储的文件夹
 @property (nonatomic, strong) NSURLSession *session;
 @property (nonatomic, strong) NSMutableDictionary *downloadDicM;
+@property (nonatomic, strong) NSMutableArray *waitingArray;
 
 @end
 
 @implementation JYDownloadManager
 
+- (instancetype)init{
+    if (self = [super init]) {
+        self.maxDownLoad = 1;
+        self.downloadPath = @"downloadPath";
+    }
+    return self;
+}
+
 - (void)downloadContent:(JYDownloadContent *)aContent onProgress:(void(^)(int64_t completeBytes, int64_t totalBytes))aProgress Complete:(void(^)(JYDownloadContent* aContent, NSError* aError))aComplete{
     if (aContent.urlString.length <= 0) {
+        NSLog(@"下载链接不能为空－－－－－");
         return;
     }
+    
+    if (self.downloadDicM.count >= self.maxDownLoad) {
+        if (aComplete) {
+            NSString *errorString = [NSString stringWithFormat:@"已达最大下载数%tu",self.maxDownLoad];
+            NSError *aError = [NSError errorWithDomain:@"超过最大下载数" code:1 userInfo:@{@"NSLocalizedDescription" : errorString}];
+            aComplete(aContent,aError);
+        }
+        return;
+    }
+    
     NSString *key = [aContent.urlString MD5String];
     JYDownload *download = self.downloadDicM[key];
     if (download == nil) {
         download = [[JYDownload alloc] init];
         download.aContent = aContent;
         download.session = self.session;
-        download.downloadPath = @"aaaaa";
+        download.downloadPath = self.downloadPath;
         [self setDownload:download forUrlString:aContent.urlString];
         [download startDownload];
     }

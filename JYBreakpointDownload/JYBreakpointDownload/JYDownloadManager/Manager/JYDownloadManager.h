@@ -10,6 +10,9 @@
 #import "JYDownloadContent.h"
 @interface JYDownloadManager : NSObject
 
+@property (nonatomic, copy) NSString *downloadPath; // 存储的文件夹
+@property (nonatomic, assign) NSInteger maxDownLoad; // 同时存在的最大下载数
+
 - (void)downloadContent:(JYDownloadContent *)aContent onProgress:(void(^)(int64_t completeBytes, int64_t totalBytes))aProgress Complete:(void(^)(JYDownloadContent* aContent, NSError* aError))aComplete;
 
 - (void)cancelUrlString:(NSString *)urlString;
