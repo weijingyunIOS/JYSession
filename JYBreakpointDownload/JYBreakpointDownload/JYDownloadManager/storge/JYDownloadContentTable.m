@@ -27,9 +27,9 @@
 
 
 - (id)checkVaule:(id)aVaule forKey:(NSString*)aKey{
-    if ([aKey isEqualToString:@"downLoadState"]) {
-        return 0;
-    }
+//    if ([aKey isEqualToString:@"downLoadState"]) {
+//        return @0;
+//    }
     return [super checkVaule:aVaule forKey:aKey];
 }
 
@@ -39,7 +39,7 @@
     [self.dbQueue inTransaction:^(FMDatabase *db, BOOL *rollback) {
         contents = [self getContentDB:db byconditions:^(JYQueryConditions *make) {
             make.field(@"downLoadType").equalTo([NSString stringWithFormat:@"%tu",type]);
-            make.field(@"downLoadState").equalTo([NSString stringWithFormat:@"%tu",EDownloadStateFinish]);
+            make.field(@"downLoadState").notEqualTo([NSString stringWithFormat:@"%tu",EDownloadStateFinish]);
         }];
     }];
     return contents;
@@ -50,7 +50,7 @@
     [self.dbQueue inTransaction:^(FMDatabase *db, BOOL *rollback) {
         contents = [self getContentDB:db byconditions:^(JYQueryConditions *make) {
             make.field(@"downLoadType").equalTo([NSString stringWithFormat:@"%tu",type]);
-            make.field(@"downLoadState").notEqualTo([NSString stringWithFormat:@"%tu",EDownloadStateFinish]);
+            make.field(@"downLoadState").equalTo([NSString stringWithFormat:@"%tu",EDownloadStateFinish]);
         }];
     }];
     return contents;

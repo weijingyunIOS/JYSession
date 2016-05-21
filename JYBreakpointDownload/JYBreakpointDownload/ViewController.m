@@ -31,6 +31,20 @@
     
     UIButton *button4 = [self addButtonTitle:@"取消2" action:@selector(cancel2:)];
     button4.frame = CGRectMake(100, 164, 80, 50);
+    
+    UIButton *button5 = [self addButtonTitle:@"已完成" action:@selector(finish:)];
+    button5.frame = CGRectMake(0, 264, 80, 50);
+    
+    UIButton *button6 = [self addButtonTitle:@"未完成" action:@selector(unfinish:)];
+    button6.frame = CGRectMake(100, 264, 80, 50);
+}
+
+- (void)finish:(UIButton *)but{
+   NSArray* infos = [[JYNetWorkService shared] getDownloadFinishType:EDownloadTypeNone];
+}
+
+- (void)unfinish:(UIButton *)but{
+  NSArray* infos = [[JYNetWorkService shared] getDownloadUnFinishType:EDownloadTypeNone];
 }
 
 - (void)start1:(UIButton *)but{
