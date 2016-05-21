@@ -17,4 +17,7 @@
 
 - (void)cancelUrlString:(NSString *)urlString;
 
+// 取消block进度回调，线程切换 卡性能
+- (void)cancelBlock;
+
 @end

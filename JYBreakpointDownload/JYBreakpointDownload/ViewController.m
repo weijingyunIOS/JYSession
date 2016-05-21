@@ -7,11 +7,10 @@
 //
 
 #import "ViewController.h"
-#import "JYDownloadManager.h"
+#import "JYNetWorkService.h"
 
 @interface ViewController ()
 
-@property (nonatomic, strong) JYDownloadManager *download;
 
 @end
 
@@ -20,8 +19,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    JYDownloadManager *download = [[JYDownloadManager alloc] init];
-    self.download = download;
     
     UIButton *button1 = [self addButtonTitle:@"开始1" action:@selector(start1:)];
     button1.frame = CGRectMake(0, 64, 80, 50);
@@ -40,7 +37,7 @@
     JYDownloadContent *aContent = [[JYDownloadContent alloc] init];
     aContent.urlString = @"http://static.meishubao.com/video/2016-05-18/mCah6DSkD5.mp4";
     aContent.contentID = @"123";
-    [self.download downloadContent:aContent onProgress:^(int64_t completeBytes, int64_t totalBytes) {
+    [[JYNetWorkService shared] downloadContent:aContent onProgress:^(int64_t completeBytes, int64_t totalBytes) {
         
     } Complete:^(JYDownloadContent* aContent, NSError *aError) {
         NSLog(@"%@",aContent.finishPath);
@@ -52,7 +49,7 @@
     JYDownloadContent *aContent = [[JYDownloadContent alloc] init];
     aContent.contentID = @"456";
     aContent.urlString = @"http://192.168.1.126/resources/HHHorizontalPagingView.zip.1";
-    [self.download downloadContent:aContent onProgress:^(int64_t completeBytes, int64_t totalBytes) {
+    [[JYNetWorkService shared] downloadContent:aContent onProgress:^(int64_t completeBytes, int64_t totalBytes) {
         
     } Complete:^(JYDownloadContent* aContent, NSError *aError) {
         NSLog(@"%@",aContent.finishPath);
@@ -61,11 +58,11 @@
 }
 
 - (void)cancel1:(UIButton*)but{
-    [self.download cancelUrlString:@"http://static.meishubao.com/video/2016-05-18/mCah6DSkD5.mp4"];
+    [[JYNetWorkService shared] cancelUrlString:@"http://static.meishubao.com/video/2016-05-18/mCah6DSkD5.mp4"];
 }
 
 - (void)cancel2:(UIButton*)but{
-    [self.download cancelUrlString:@"http://192.168.1.126/resources/qwe.mp4"];
+    [[JYNetWorkService shared] cancelUrlString:@"http://192.168.1.126/resources/qwe.mp4"];
 }
 
 - (UIButton *)addButtonTitle:(NSString*)aTitle action:(SEL)aSel{

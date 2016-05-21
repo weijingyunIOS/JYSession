@@ -50,6 +50,11 @@
     }];
 }
 
+- (void)cancelBlockType:(EDownloadType)type{
+    JYDownloadManager *downloadManager = [self getDownloadManagerForType:type];
+    [downloadManager cancelBlock];
+}
+
 #pragma mark - downloadManager 创建
 - (void)setDownloadManager:(JYDownloadManager *)downloadManager forType:(EDownloadType)type{
     NSString *typeName = [[JYNetWorkConfig shared] getDownloadType:type];
@@ -60,6 +65,7 @@
     NSString *typeName = [[JYNetWorkConfig shared] getDownloadType:type];
     JYDownloadManager *downloadManager = self.downloadDicM[typeName];
     if (downloadManager == nil) {
+        downloadManager = [[JYDownloadManager alloc] init];
         downloadManager.downloadPath = [[JYNetWorkConfig shared].netWorkDirectory stringByAppendingPathComponent:typeName];
         downloadManager.maxDownLoad = [[JYNetWorkConfig shared] getMaxDownloadForType:type];
         [self setDownloadManager:downloadManager forType:type];

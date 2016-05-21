@@ -14,7 +14,6 @@
 
 @property (nonatomic, strong) NSURLSession *session;
 @property (nonatomic, strong) NSMutableDictionary *downloadDicM;
-@property (nonatomic, strong) NSMutableArray *waitingArray;
 
 @end
 
@@ -34,18 +33,19 @@
         return;
     }
     
-    if (self.downloadDicM.count >= self.maxDownLoad) {
-        if (aComplete) {
-            NSString *errorString = [NSString stringWithFormat:@"已达最大下载数%tu",self.maxDownLoad];
-            NSError *aError = [NSError errorWithDomain:@"超过最大下载数" code:1 userInfo:@{@"NSLocalizedDescription" : errorString}];
-            aComplete(aContent,aError);
-        }
-        return;
-    }
-    
     NSString *key = [aContent.urlString MD5String];
     JYDownload *download = self.downloadDicM[key];
     if (download == nil) {
+        
+        if (self.downloadDicM.count >= self.maxDownLoad) {
+            if (aComplete) {
+                NSString *errorString = [NSString stringWithFormat:@"已达最大下载数%tu",self.maxDownLoad];
+                NSError *aError = [NSError errorWithDomain:@"超过最大下载数" code:1 userInfo:@{@"NSLocalizedDescription" : errorString}];
+                aComplete(aContent,aError);
+            }
+            return;
+        }
+        
         download = [[JYDownload alloc] init];
         download.aContent = aContent;
         download.session = self.session;
@@ -54,6 +54,7 @@
         [download startDownload];
         [[JYNetWorkService shared] insertDownloadContent:aContent];
     }
+    
     aContent.downLoadState = EDownloadStateGoing;
     __weak typeof(JYDownloadManager*)weakSelf = self;
     download.successBlock = ^(JYDownload *aCmd){
@@ -93,6 +94,14 @@
     NSString *key = [urlString MD5String];
      JYDownload *download = self.downloadDicM[key];
     [download cancel];
+}
+
+// 取消block进度回调，线程切换 卡性能
+- (void)cancelBlock{
+    [self.downloadDicM enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+        JYDownload *download = self.downloadDicM[key];
+        [self downloadContent:download.aContent onProgress:nil Complete:nil];
+    }];
 }
 
 #pragma mark - NSURLSessionDelegate
