@@ -22,7 +22,7 @@
 }
 
 - (NSArray<NSString *> *)getContentField{
-    return @[@"urlString",@"downLoadState",@"downLoadType",@"relativePath",@"serverFileSize",@"extenInfo",@"a1",@"a2",@"a3"];
+    return @[@"urlString",@"downLoadState",@"downLoadType",@"relativePath",@"serverFileSize",@"extenInfo"];
 }
 
 

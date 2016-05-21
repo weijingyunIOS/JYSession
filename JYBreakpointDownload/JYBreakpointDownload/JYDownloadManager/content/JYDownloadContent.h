@@ -27,9 +27,6 @@ typedef NS_ENUM(NSUInteger, EDownloadState) {
 @property (nonatomic, copy) NSString *relativePath;         // 下载完成后(或未完成)的相对地址
 @property (nonatomic, assign) long long serverFileSize;     // 服务器上文件总大小
 @property (nonatomic, strong) NSDictionary *extenInfo;      // 扩展信息
-@property (nonatomic, strong) NSMutableArray *a1;      // 扩展信息
-@property (nonatomic, strong) NSMutableDictionary *a2;      // 扩展信息
-@property (nonatomic, strong) NSArray *a3;      // 扩展信息
 
 // 以下下属性不保存数据库
 @property (nonatomic, copy, readonly) NSString *finishPath; // 下载完成后(或未完成)的实际地址
