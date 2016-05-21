@@ -15,11 +15,12 @@
 @property (nonatomic, strong) NSURLSession *session;
 @property (nonatomic, strong) JYDownloadContent *aContent;
 
-@property (nonatomic, assign) NSString*completeFilePath;
-
 @property (nonatomic, copy) void (^successBlock)(JYDownload*);
 @property (nonatomic, copy) void (^failBlock)(JYDownload*, NSError*);
 @property (nonatomic, copy) void (^downloadProgress)(int64_t completeBytes, int64_t totalBytes);
+
+// 下载完成后的地址
+@property (nonatomic, copy, readonly) NSString*completeFilePath; // 完成后调用
 
 - (void)startDownload;
 - (void)cancel;

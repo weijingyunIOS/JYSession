@@ -12,4 +12,11 @@
 
 - (NSString *)MD5String;
 
+// 仅保留 string 前的字符
+- (NSString *)deleteString:(NSString*)string;
+
+// 仅保留 string 后的字符
+- (NSString *)deleteBeforeString:(NSString*)string;
+
+
 @end

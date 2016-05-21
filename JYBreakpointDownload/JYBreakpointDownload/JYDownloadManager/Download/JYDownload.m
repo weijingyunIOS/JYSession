@@ -18,7 +18,10 @@ typedef NS_ENUM(NSUInteger, EDownloadType) {
 
 @interface JYDownload()
 
+@property (nonatomic, copy) NSString *completeFilePath;
 @property (nonatomic, copy) NSString *downloadFilePath;
+@property (nonatomic, copy) NSString *fileType;
+
 @property (nonatomic, assign) long long startLenght;
 @property (nonatomic, strong) NSURLSessionDataTask *dataTask;
 @property (atomic, assign) NSTimeInterval timeStamp; // 单写多读
@@ -34,7 +37,7 @@ typedef NS_ENUM(NSUInteger, EDownloadType) {
         
         long long length = [headerFields[@"Content-Length"] longLongValue];
         NSString *contentType = headerFields[@"Content-Type"];
-        NSLog(@"contentType--%@",contentType);
+        self.fileType = [contentType deleteBeforeString:@"/"];
         NSInteger type = [self needDownload:length];
         switch (type) {
             case EDownloadNone:
@@ -97,13 +100,11 @@ typedef NS_ENUM(NSUInteger, EDownloadType) {
 }
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        if (error == nil) {
-            [self notifySuccess];
-        }else{
-            [self notifyFailWithError:error];
-        }
-    });
+    if (error == nil) {
+        [self notifySuccess];
+    }else{
+        [self notifyFailWithError:error];
+    }
 }
 
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data{
@@ -126,16 +127,21 @@ typedef NS_ENUM(NSUInteger, EDownloadType) {
 
 #pragma mark - 失败成功回调
 - (void)notifySuccess{
-    NSLog(@"download object success!");
+    NSLog(@"download object success! %@",[NSThread currentThread]);
+    [self moveFile];
     if (self.successBlock) {
-        self.successBlock(self);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.successBlock(self);
+        });
     }
 }
 
 - (void)notifyFailWithError:(NSError *)aError{
-    NSLog(@"head object failed, error: %@" ,aError);
+    NSLog(@"head object failed, error: %@ %@",[NSThread currentThread],aError);
     if (self.failBlock) {
-        self.failBlock(self,aError);
+         dispatch_async(dispatch_get_main_queue(), ^{
+             self.failBlock(self,aError);
+         });
     }
 }
 
@@ -166,6 +172,19 @@ typedef NS_ENUM(NSUInteger, EDownloadType) {
     return EDownloadRange;
 }
 
+// 将下载完成的文件完成下载
+- (void)moveFile{
+    NSFileManager* manager = [NSFileManager defaultManager];
+    self.completeFilePath = [self getCompleteFilePath];
+    [JYFileManager deleteLocalFilePath:self.completeFilePath];
+    NSError *error = nil;
+    if ([manager moveItemAtPath:self.downloadFilePath toPath:self.completeFilePath error:&error]) {
+       
+    }else{
+        NSLog(@"Error: %@", error);
+    }
+}
+
 #pragma mark - 文件处理
 // 获取本地文件的大小长度
 - (long long)getLocalFileLength{
@@ -180,9 +199,16 @@ typedef NS_ENUM(NSUInteger, EDownloadType) {
 #pragma mark - 懒加载
 - (NSString *)downloadFilePath{
     if (!_downloadFilePath) {
-        _downloadFilePath = [JYFileManager getCachePathWith:self.downloadPath fileName:[self.aContent.urlString MD5String]];
+        _downloadFilePath = [JYFileManager getCachePathWith:[self.downloadPath stringByAppendingPathComponent:@"unfinished"] fileName:[self.aContent.urlString MD5String]];
+        NSLog(@"%@",_downloadFilePath);
     }
     return _downloadFilePath;
+}
+
+- (NSString *)getCompleteFilePath{
+    NSString *fileName = self.fileType.length > 0 ? [NSString stringWithFormat:@"%@.%@",[self.aContent.urlString MD5String],self.fileType] : [self.aContent.urlString MD5String];
+    self.aContent.relativePath = [NSString stringWithFormat:@"%@/finished/%@",self.downloadPath,fileName];
+    return [JYFileManager getCachePathWith:[self.downloadPath stringByAppendingPathComponent:@"finished"] fileName:fileName];
 }
 
 - (void)dealloc{

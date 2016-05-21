@@ -20,5 +20,9 @@ typedef NS_ENUM(NSUInteger, EDownloadState) {
 
 @property (nonatomic, copy) NSString *urlString;
 @property (nonatomic, assign) EDownloadState downLoadState;
+@property (nonatomic, copy) NSString *relativePath;         // 下载完成后的相对地址
+
+// 一下属性不保存数据库
+@property (nonatomic, copy, readonly) NSString *finishPath; // 下载完成后的实际地址
 
 @end

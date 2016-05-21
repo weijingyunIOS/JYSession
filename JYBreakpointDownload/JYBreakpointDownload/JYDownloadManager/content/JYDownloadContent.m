@@ -7,7 +7,16 @@
 //
 
 #import "JYDownloadContent.h"
+#import "JYFileManager.h"
 
 @implementation JYDownloadContent
+
+- (NSString *)finishPath{
+    return [JYFileManager getCachePathWith:self.relativePath];
+}
+
+- (void)dealloc{
+    NSLog(@"%s",__func__);
+}
 
 @end

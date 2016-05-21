@@ -19,7 +19,7 @@
 
 @implementation JYDownloadManager
 
-- (void)downloadContent:(JYDownloadContent *)aContent onProgress:(void(^)(int64_t completeBytes, int64_t totalBytes))aProgress Complete:(void(^)(NSString* aFilePath, NSError* aError))aComplete{
+- (void)downloadContent:(JYDownloadContent *)aContent onProgress:(void(^)(int64_t completeBytes, int64_t totalBytes))aProgress Complete:(void(^)(JYDownloadContent* aContent, NSError* aError))aComplete{
     if (aContent.urlString.length <= 0) {
         return;
     }
@@ -38,7 +38,7 @@
     download.successBlock = ^(JYDownload *aCmd){
 //        [self upState:EDownLoadstateFinish downLoadUrl:aUrl];
         if (aComplete) {
-            aComplete(aCmd.completeFilePath,nil);
+            aComplete(aCmd.aContent,nil);
         }
         [weakSelf.downloadDicM removeObjectForKey:key];
     };

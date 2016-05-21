@@ -30,4 +30,29 @@
     
 }
 
+// 仅保留 string 前的字符
+- (NSString *)deleteString:(NSString*)string{
+    
+    NSRange range = [self rangeOfString:string];
+    
+    if (range.length > 0) {
+        return [self substringToIndex:range.location];
+    }
+    
+    return self;
+}
+
+// 仅保留 string 后的字符
+- (NSString *)deleteBeforeString:(NSString*)string{
+    
+    NSRange range = [self rangeOfString:string];
+    
+    if (range.length > 0) {
+        return [self substringFromIndex:range.length + range.location];
+    }
+    
+    return self;
+}
+
+
 @end

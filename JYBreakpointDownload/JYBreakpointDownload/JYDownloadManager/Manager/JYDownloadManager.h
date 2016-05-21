@@ -10,7 +10,7 @@
 #import "JYDownloadContent.h"
 @interface JYDownloadManager : NSObject
 
-- (void)downloadContent:(JYDownloadContent *)aContent onProgress:(void(^)(int64_t completeBytes, int64_t totalBytes))aProgress Complete:(void(^)(NSString* aFilePath, NSError* aError))aComplete;
+- (void)downloadContent:(JYDownloadContent *)aContent onProgress:(void(^)(int64_t completeBytes, int64_t totalBytes))aProgress Complete:(void(^)(JYDownloadContent* aContent, NSError* aError))aComplete;
 
 - (void)cancelUrlString:(NSString *)urlString;
 

@@ -20,6 +20,7 @@
 		5C83D68E1CEDD19F00376218 /* JYFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C83D68D1CEDD19F00376218 /* JYFileManager.m */; };
 		5C83D6911CEDD1C200376218 /* JYDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C83D6901CEDD1C200376218 /* JYDownloadManager.m */; };
 		5C83D6951CEDD23400376218 /* JYDownloadContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C83D6941CEDD23400376218 /* JYDownloadContent.m */; };
+		5CE951DB1CF0017400ABCB6D /* JYNetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE951DA1CF0017400ABCB6D /* JYNetWorkManager.m */; };
 		FA6FE3AA0E6F150FD100C891 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 461A913742187D5AE218CF85 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +71,8 @@
 		5C83D6901CEDD1C200376218 /* JYDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYDownloadManager.m; sourceTree = "<group>"; };
 		5C83D6931CEDD23400376218 /* JYDownloadContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYDownloadContent.h; sourceTree = "<group>"; };
 		5C83D6941CEDD23400376218 /* JYDownloadContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYDownloadContent.m; sourceTree = "<group>"; };
+		5CE951D91CF0017400ABCB6D /* JYNetWorkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYNetWorkManager.h; sourceTree = "<group>"; };
+		5CE951DA1CF0017400ABCB6D /* JYNetWorkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYNetWorkManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +210,8 @@
 				5C83D68D1CEDD19F00376218 /* JYFileManager.m */,
 				5C83D68F1CEDD1C200376218 /* JYDownloadManager.h */,
 				5C83D6901CEDD1C200376218 /* JYDownloadManager.m */,
+				5CE951D91CF0017400ABCB6D /* JYNetWorkManager.h */,
+				5CE951DA1CF0017400ABCB6D /* JYNetWorkManager.m */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -420,6 +425,7 @@
 			files = (
 				5C08901C1CEC2015002D2CB7 /* ViewController.m in Sources */,
 				5C0890191CEC2015002D2CB7 /* AppDelegate.m in Sources */,
+				5CE951DB1CF0017400ABCB6D /* JYNetWorkManager.m in Sources */,
 				5C83D68E1CEDD19F00376218 /* JYFileManager.m in Sources */,
 				5C83D6861CEDACAB00376218 /* JYDownload.m in Sources */,
 				5C0012581CEEB4010087771F /* NSString+JYCategory.m in Sources */,
