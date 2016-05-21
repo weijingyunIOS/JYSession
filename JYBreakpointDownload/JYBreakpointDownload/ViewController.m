@@ -40,17 +40,23 @@
 }
 
 - (void)finish:(UIButton *)but{
-   NSArray* infos = [[JYNetWorkService shared] getDownloadFinishType:EDownloadTypeNone];
+   NSArray<JYDownloadContent*>* infos = [[JYNetWorkService shared] getDownloadFinishType:EDownloadTypeNone];
+   NSLog(@"%@",infos.lastObject.extenInfo);
 }
 
 - (void)unfinish:(UIButton *)but{
-  NSArray* infos = [[JYNetWorkService shared] getDownloadUnFinishType:EDownloadTypeNone];
+  NSArray<JYDownloadContent*>* infos = [[JYNetWorkService shared] getDownloadUnFinishType:EDownloadTypeNone];
+    NSLog(@"%@",infos.lastObject.extenInfo);
 }
 
 - (void)start1:(UIButton *)but{
     JYDownloadContent *aContent = [[JYDownloadContent alloc] init];
     aContent.urlString = @"http://static.meishubao.com/video/2016-05-18/mCah6DSkD5.mp4";
     aContent.contentID = @"123";
+    aContent.extenInfo = @{@"11":@"11",@"22":@[@"aa",@"aa1"]};
+    aContent.a2 = [aContent.extenInfo mutableCopy];
+    aContent.a3 = @[@"a1",@"a11"];
+     aContent.a1 = [aContent.a3 mutableCopy];
     [[JYNetWorkService shared] downloadContent:aContent onProgress:^(int64_t completeBytes, int64_t totalBytes) {
         
     } Complete:^(JYDownloadContent* aContent, NSError *aError) {

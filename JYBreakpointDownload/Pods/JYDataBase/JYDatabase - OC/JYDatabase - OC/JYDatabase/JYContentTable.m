@@ -11,13 +11,14 @@
 #import "FMDB.h"
 #import <objc/runtime.h>
 
-#define kAttributeArray @[@"TB",@"Td",@"Tf",@"Ti",@"Tq",@"TQ",@"T@\"NSMutableString\"",@"T@\"NSString\"",@"T@\"NSData\"",@"T@\"UIImage\"",@"T@\"NSNumber\""]
-#define kTypeArray      @[@"BOOL",@"DOUBLE",@"FLOAT",@"INTEGER",@"INTEGER",@"INTEGER",@"VARCHAR",@"VARCHAR",@"BLOB",@"BLOB",@"BLOB"]
-#define kLenghtArray    @[@"1"   ,@"20"    ,@"10"   ,@"10"     ,@"10"     ,@"10"     ,@"128"    ,@"128",    @"256",@"256",@"64"]
+#define kAttributeArray @[@"TB",@"Td",@"Tf",@"Ti",@"Tq",@"TQ",@"T@\"NSMutableString\"",@"T@\"NSString\"",@"T@\"NSData\"",@"T@\"UIImage\"",@"T@\"NSNumber\"",@"T@\"NSDictionary\"",@"T@\"NSMutableDictionary\"",@"T@\"NSMutableArray\"",@"T@\"NSArray\""]
+#define kTypeArray      @[@"BOOL",@"DOUBLE",@"FLOAT",@"INTEGER",@"INTEGER",@"INTEGER",@"VARCHAR",@"VARCHAR",@"BLOB",@"BLOB",@"BLOB",@"BLOB",@"BLOB",@"BLOB",@"BLOB"]
+#define kLenghtArray    @[@"1"   ,@"20"    ,@"10"   ,@"10"     ,@"10"     ,@"10"     ,@"128"    ,@"128",    @"256",@"256",@"64",@"512",@"512",@"512",@"512"]
 
 @interface JYContentTable()
 
 @property (nonatomic, strong) NSCache *cache;
+@property (nonatomic, strong) NSDictionary *attributeTypeDic;
 
 @end
 
@@ -117,6 +118,12 @@
             vaule = UIImageJPEGRepresentation(vaule,1.0);
         }
     }
+    
+    NSString *type = [self attributeTypeDic][akey];
+    
+    if ([self jSONSerializationForType:type] && vaule != nil) {
+        vaule = [NSJSONSerialization dataWithJSONObject:vaule options:NSJSONWritingPrettyPrinted error:nil];
+    }
     return [self checkEmpty:vaule];
 }
 
@@ -127,6 +134,10 @@
         if ([type  isEqual: @"T@\"UIImage\""] && aVaule != [NSNull null]) {
             aVaule = [UIImage imageWithData:aVaule];
         }
+    
+        if ([self jSONSerializationForType:type] && aVaule != [NSNull null]) {
+            aVaule =  [NSJSONSerialization JSONObjectWithData:aVaule options:NSJSONReadingMutableContainers error:nil];
+        }
         
         if ([aKey isEqualToString:[self insertTimeField]]) {
             return [NSNull null];
@@ -135,23 +146,37 @@
     }
 }
 
+- (BOOL)jSONSerializationForType:(NSString*)type{
+    NSArray *array = @[@"T@\"NSDictionary\"",@"T@\"NSMutableDictionary\"",@"T@\"NSMutableArray\"",@"T@\"NSArray\""];
+    __block BOOL abool= NO;
+    [array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        abool =abool || [obj isEqualToString:type];
+    }];
+    return abool;
+}
+
 #pragma mark - field Attributes 获取准备处理 如 personid varchar(64)
 - (NSDictionary*)attributeTypeDic{
-    NSMutableDictionary *dicM = [[NSMutableDictionary alloc] init];
-    unsigned int outCount;
-    objc_property_t *properties = class_copyPropertyList(self.contentClass, &outCount);
-    for (NSInteger index = 0; index < outCount; index++) {
-        NSString *tmpName = [NSString stringWithFormat:@"%s",property_getName(properties[index])];
-        NSString *tmpAttributes = [NSString stringWithFormat:@"%s",property_getAttributes(properties[index])];
-        NSArray<NSString*> *attributes = [tmpAttributes componentsSeparatedByString:@","];
-        dicM[tmpName] = attributes.firstObject;
+    if (!_attributeTypeDic) {
+        
+        NSMutableDictionary *dicM = [[NSMutableDictionary alloc] init];
+        unsigned int outCount;
+        objc_property_t *properties = class_copyPropertyList(self.contentClass, &outCount);
+        for (NSInteger index = 0; index < outCount; index++) {
+            NSString *tmpName = [NSString stringWithFormat:@"%s",property_getName(properties[index])];
+            NSString *tmpAttributes = [NSString stringWithFormat:@"%s",property_getAttributes(properties[index])];
+            NSArray<NSString*> *attributes = [tmpAttributes componentsSeparatedByString:@","];
+            dicM[tmpName] = attributes.firstObject;
+        }
+        
+        if (properties) {
+            free(properties);
+        }
+        dicM[[self insertTimeField]] = @"Td";
+        _attributeTypeDic = [dicM copy];
     }
-    
-    if (properties) {
-        free(properties);
-    }
-    dicM[[self insertTimeField]] = @"Td";
-    return [dicM copy];
+    return _attributeTypeDic;
 }
 
 // 类型的映射
