@@ -18,6 +18,9 @@
 @implementation JYDownloadContent
 
 - (NSString *)finishPath{
+    if (self.relativePath.length <= 0) {
+        return nil;
+    }
     return [JYFileManager getCachePathWith:self.relativePath];
 }
 

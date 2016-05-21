@@ -8,6 +8,8 @@
 
 #import "JYDownloadContentTable.h"
 #import "FMDatabaseQueue.h"
+#import "JYNetWorkService.h"
+#import "JYFileManager.h"
 
 @implementation JYDownloadContentTable
 
@@ -57,7 +59,13 @@
 }
 
 - (void)deleteDownloadContent:(JYDownloadContent *)aContent{
-    
+    JYDownloadContent *content = [self getContentByID:aContent.contentID];
+    JYDownloadContent *currContent = content.urlString.length > 0 ? content : aContent;    [[JYNetWorkService shared] canceltype:currContent.downLoadType UrlString:currContent.urlString];
+    [JYFileManager deleteLocalFilePath:currContent.finishPath];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [JYFileManager deleteLocalFilePath:currContent.finishPath];
+    });
+    [self deleteContentByID:currContent.contentID];
 }
 
 

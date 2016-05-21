@@ -37,6 +37,23 @@
     
     UIButton *button6 = [self addButtonTitle:@"未完成" action:@selector(unfinish:)];
     button6.frame = CGRectMake(100, 264, 80, 50);
+    
+    UIButton *button7 = [self addButtonTitle:@"删除" action:@selector(delete1:)];
+    button7.frame = CGRectMake(0, 364, 80, 50);
+    UIButton *button8 = [self addButtonTitle:@"删除" action:@selector(delete2:)];
+    button8.frame = CGRectMake(100, 364, 80, 50);
+}
+
+- (void)delete1:(UIButton *)but{
+    JYDownloadContent *aContent = [[JYDownloadContent alloc] init];
+    aContent.contentID = @"123";
+    [[JYNetWorkService shared] deleteDownloadContent:aContent];
+}
+
+- (void)delete2:(UIButton *)but{
+    JYDownloadContent *aContent = [[JYDownloadContent alloc] init];
+    aContent.contentID = @"456";
+    [[JYNetWorkService shared] deleteDownloadContent:aContent];
 }
 
 - (void)finish:(UIButton *)but{
