@@ -50,6 +50,11 @@
     }];
 }
 
+- (void)canceltype:(EDownloadType)type UrlString:(NSString *)urlString{
+    JYDownloadManager *downloadManager = [self getDownloadManagerForType:type];
+    [downloadManager cancelUrlString:urlString];
+}
+
 - (void)cancelBlockType:(EDownloadType)type{
     JYDownloadManager *downloadManager = [self getDownloadManagerForType:type];
     [downloadManager cancelBlock];

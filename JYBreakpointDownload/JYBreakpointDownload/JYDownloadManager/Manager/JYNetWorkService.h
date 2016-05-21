@@ -23,6 +23,7 @@
 
 // 一个urlString 不该做为多种 EDownloadType。
 - (void)cancelUrlString:(NSString *)urlString;
+- (void)canceltype:(EDownloadType)type UrlString:(NSString *)urlString;
 - (void)cancelBlockType:(EDownloadType)type;
 
 #pragma mark - downloadManager数据库操作
