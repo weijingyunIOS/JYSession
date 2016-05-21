@@ -38,9 +38,9 @@
     UIButton *button6 = [self addButtonTitle:@"未完成" action:@selector(unfinish:)];
     button6.frame = CGRectMake(100, 264, 80, 50);
     
-    UIButton *button7 = [self addButtonTitle:@"删除" action:@selector(delete1:)];
+    UIButton *button7 = [self addButtonTitle:@"删除1" action:@selector(delete1:)];
     button7.frame = CGRectMake(0, 364, 80, 50);
-    UIButton *button8 = [self addButtonTitle:@"删除" action:@selector(delete2:)];
+    UIButton *button8 = [self addButtonTitle:@"删除2" action:@selector(delete2:)];
     button8.frame = CGRectMake(100, 364, 80, 50);
 }
 
@@ -58,12 +58,14 @@
 
 - (void)finish:(UIButton *)but{
    NSArray<JYDownloadContent*>* infos = [[JYNetWorkService shared] getDownloadFinishType:EDownloadTypeNone];
-   NSLog(@"%@ -- %tu",infos.lastObject.extenInfo,infos.count);
+    NSInteger count = [[JYNetWorkService shared] getDownloadFinishCountType:EDownloadTypeNone];
+   NSLog(@"%@ -- %tu",infos.lastObject.extenInfo,count);
 }
 
 - (void)unfinish:(UIButton *)but{
     NSArray<JYDownloadContent*>* infos = [[JYNetWorkService shared] getDownloadUnFinishType:EDownloadTypeNone];
-    NSLog(@"%@ -- %tu",infos.lastObject.extenInfo,infos.count);
+    NSInteger count = [[JYNetWorkService shared] getDownloadUnFinishCountType:EDownloadTypeNone];
+    NSLog(@"%@ -- %tu",infos.lastObject.extenInfo,count);
 }
 
 - (void)start1:(UIButton *)but{

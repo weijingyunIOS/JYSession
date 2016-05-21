@@ -63,6 +63,13 @@
 - (void)deleteAllContent;
 - (void)cleanContentBefore:(NSDate*)date;
 
+#pragma mark - getCount
+- (NSInteger)getCountContentDB:(FMDatabase *)aDB byconditions:(void (^)(JYQueryConditions *make))block;
+- (NSInteger)getCountByConditions:(void (^)(JYQueryConditions *make))block;
+- (NSInteger)getAllCount;
+
+
+
 #pragma mark - 缓存存取删
 - (id)getCacheContentID:(NSString *)aID;
 - (void)saveCacheContent:(id)aContent;

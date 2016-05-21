@@ -31,5 +31,7 @@
 - (void)deleteDownloadContent:(JYDownloadContent *)aContent;
 - (NSArray<JYDownloadContent *> *)getDownloadUnFinishType:(EDownloadType)type;
 - (NSArray<JYDownloadContent *> *)getDownloadFinishType:(EDownloadType)type;
+- (NSInteger)getDownloadFinishCountType:(EDownloadType)type;
+- (NSInteger)getDownloadUnFinishCountType:(EDownloadType)type;
 
 @end

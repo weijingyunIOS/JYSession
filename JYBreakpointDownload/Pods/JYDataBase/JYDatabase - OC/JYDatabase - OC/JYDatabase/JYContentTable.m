@@ -358,15 +358,15 @@
     if (block) {
         block(conditions);
     }
-    __block NSMutableString *strM = [[NSMutableString alloc] init];
     NSArray<NSString *> *fields = [self getAllContentField];
+    
+#if DEBUG
     [conditions.conditions enumerateObjectsUsingBlock:^(NSMutableDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         NSAssert(([fields containsObject:obj[kField]]),@"该表不存在这个字段 -- %@",obj);
-        [strM appendFormat:@"%@ %@ %@",obj[kField],obj[kEqual],obj[kCompare]];
-        if (idx < conditions.conditions.count - 1) {
-            [strM appendFormat:@" AND "];
-        }
     }];
+#endif
+    
+    NSMutableString *strM = conditions.conditionStr;
     
     NSString *sql;
     if (strM.length > 0) {
@@ -482,16 +482,16 @@
     if (block) {
         block(conditions);
     }
-    __block NSMutableString *strM = [[NSMutableString alloc] init];
+    
     NSArray<NSString *> *fields = [self getAllContentField];
+    
+#if DEBUG
     [conditions.conditions enumerateObjectsUsingBlock:^(NSMutableDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         NSAssert(([fields containsObject:obj[kField]]),@"该表不存在这个字段 -- %@",obj);
-        [strM appendFormat:@"%@ %@ %@",obj[kField],obj[kEqual],obj[kCompare]];
-        if (idx < conditions.conditions.count - 1) {
-            [strM appendFormat:@" AND "];
-        }
     }];
+#endif
     
+    NSMutableString *strM = conditions.conditionStr;
     NSString *sql;
     if (strM.length > 0) {
         sql = [NSString stringWithFormat:@"DELETE FROM %@ WHERE %@", self.tableName, strM];
@@ -548,6 +548,58 @@
             make.field([self insertTimeField]).lessTo([NSString stringWithFormat:@"%f",time]);
         }];
     }];
+}
+
+#pragma mark - getCount
+- (NSInteger)getCountContentDB:(FMDatabase *)aDB byconditions:(void (^)(JYQueryConditions *make))block{
+    
+    [self configTableName];
+    JYQueryConditions *conditions = [[JYQueryConditions alloc] init];
+    if (block) {
+        block(conditions);
+    }
+    NSArray<NSString *> *fields = [self getAllContentField];
+    
+#if DEBUG
+    [conditions.conditions enumerateObjectsUsingBlock:^(NSMutableDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSAssert(([fields containsObject:obj[kField]]),@"该表不存在这个字段 -- %@",obj);
+    }];
+#endif
+    
+    NSMutableString *strM = conditions.conditionStr;
+    
+    NSString *sql;
+    if (strM.length > 0) {
+        sql = [NSString stringWithFormat:@"select count(1) from %@ WHERE %@ ", self.tableName, strM];
+    }else{
+        sql = [NSString stringWithFormat:@"select count(1) from %@ ", self.tableName];
+    }
+    
+    NSLog(@"conditions -- %@",sql);
+    NSInteger count = 0;
+    FMResultSet *rs = [aDB executeQuery:sql];
+    while([rs next]) {
+        count = [rs intForColumnIndex:0];
+    }
+    [rs close];
+    [self checkError:aDB];
+    return count;
+}
+
+- (NSInteger)getCountByConditions:(void (^)(JYQueryConditions *make))block{
+    __block NSInteger count = 0;
+    [self.dbQueue inTransaction:^(FMDatabase *db, BOOL *rollback) {
+        count = [self getCountContentDB:db byconditions:block];
+    }];
+    return count;
+}
+
+- (NSInteger)getAllCount{
+    __block NSInteger count = 0;
+    [self.dbQueue inTransaction:^(FMDatabase *db, BOOL *rollback) {
+        count = [self getCountContentDB:db byconditions:nil];
+    }];
+    return count;
 }
 
 #pragma mark - 缓存存取删

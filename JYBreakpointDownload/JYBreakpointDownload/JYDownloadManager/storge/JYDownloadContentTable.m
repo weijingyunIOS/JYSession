@@ -37,25 +37,32 @@
 
 - (NSArray<JYDownloadContent *> *)getDownloadUnFinishType:(EDownloadType)type{
     
-    __block id contents = nil;
-    [self.dbQueue inTransaction:^(FMDatabase *db, BOOL *rollback) {
-        contents = [self getContentDB:db byconditions:^(JYQueryConditions *make) {
-            make.field(@"downLoadType").equalTo([NSString stringWithFormat:@"%tu",type]);
-            make.field(@"downLoadState").notEqualTo([NSString stringWithFormat:@"%tu",EDownloadStateFinish]);
-        }];
+    return [self getContentByConditions:^(JYQueryConditions *make) {
+        make.field(@"downLoadType").equalTo([NSString stringWithFormat:@"%tu",type]);
+        make.field(@"downLoadState").notEqualTo([NSString stringWithFormat:@"%tu",EDownloadStateFinish]);
     }];
-    return contents;
+}
+
+- (NSInteger)getDownloadUnFinishCountType:(EDownloadType)type{
+    return [self getCountByConditions:^(JYQueryConditions *make) {
+        make.field(@"downLoadType").equalTo([NSString stringWithFormat:@"%tu",type]);
+        make.field(@"downLoadState").notEqualTo([NSString stringWithFormat:@"%tu",EDownloadStateFinish]);
+    }];
 }
 
 - (NSArray<JYDownloadContent *> *)getDownloadFinishType:(EDownloadType)type{
-    __block id contents = nil;
-    [self.dbQueue inTransaction:^(FMDatabase *db, BOOL *rollback) {
-        contents = [self getContentDB:db byconditions:^(JYQueryConditions *make) {
-            make.field(@"downLoadType").equalTo([NSString stringWithFormat:@"%tu",type]);
-            make.field(@"downLoadState").equalTo([NSString stringWithFormat:@"%tu",EDownloadStateFinish]);
-        }];
+    
+    return [self getContentByConditions:^(JYQueryConditions *make) {
+        make.field(@"downLoadType").equalTo([NSString stringWithFormat:@"%tu",type]);
+        make.field(@"downLoadState").equalTo([NSString stringWithFormat:@"%tu",EDownloadStateFinish]);
     }];
-    return contents;
+}
+
+- (NSInteger)getDownloadFinishCountType:(EDownloadType)type{
+    return [self getCountByConditions:^(JYQueryConditions *make) {
+        make.field(@"downLoadType").equalTo([NSString stringWithFormat:@"%tu",type]);
+        make.field(@"downLoadState").equalTo([NSString stringWithFormat:@"%tu",EDownloadStateFinish]);
+    }];
 }
 
 - (void)deleteDownloadContent:(JYDownloadContent *)aContent{

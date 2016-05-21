@@ -101,6 +101,14 @@
     return [self.netWorkDB.downloadTable getDownloadFinishType:type];
 }
 
+- (NSInteger)getDownloadFinishCountType:(EDownloadType)type{
+    return [self.netWorkDB.downloadTable getDownloadFinishCountType:type];
+}
+
+- (NSInteger)getDownloadUnFinishCountType:(EDownloadType)type{
+    return [self.netWorkDB.downloadTable getDownloadUnFinishCountType:type];
+}
+
 #pragma mark - 懒加载
 - (NSMutableDictionary *)downloadDicM{
     if (!_downloadDicM) {

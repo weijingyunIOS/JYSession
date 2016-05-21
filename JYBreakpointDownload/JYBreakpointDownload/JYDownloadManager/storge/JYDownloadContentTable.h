@@ -11,7 +11,9 @@
 @interface JYDownloadContentTable : JYContentTable
 
 - (NSArray<JYDownloadContent *> *)getDownloadUnFinishType:(EDownloadType)type;
+- (NSInteger)getDownloadUnFinishCountType:(EDownloadType)type;
 - (NSArray<JYDownloadContent *> *)getDownloadFinishType:(EDownloadType)type;
+- (NSInteger)getDownloadFinishCountType:(EDownloadType)type;
 - (void)deleteDownloadContent:(JYDownloadContent *)aContent;
 
 

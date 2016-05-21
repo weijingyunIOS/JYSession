@@ -105,6 +105,17 @@
     };
 }
 
+- (NSMutableString *)conditionStr{
+    __block NSMutableString *strM = [[NSMutableString alloc] init];
+    [self.conditions enumerateObjectsUsingBlock:^(NSMutableDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [strM appendFormat:@"%@ %@ %@",obj[kField],obj[kEqual],obj[kCompare]];
+        if (idx < self.conditions.count - 1) {
+            [strM appendFormat:@" AND "];
+        }
+    }];
+    return strM;
+}
+
 #pragma mark - 懒加载
 - (NSMutableArray<NSMutableDictionary *> *)conditions{
     if (!_conditions) {
