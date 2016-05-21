@@ -21,6 +21,7 @@ typedef NS_ENUM(NSUInteger, EDownloadType) {
 @property (nonatomic, copy) NSString *downloadFilePath;
 @property (nonatomic, assign) long long startLenght;
 @property (nonatomic, strong) NSURLSessionDataTask *dataTask;
+@property (atomic, assign) NSTimeInterval timeStamp; // 单写多读
 
 @end
 
@@ -106,8 +107,16 @@ typedef NS_ENUM(NSUInteger, EDownloadType) {
 }
 
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data{
-    NSLog(@"%@",[NSThread currentThread]);
+
     [self saveFileData:data];
+    
+    NSTimeInterval newTime = [NSDate date].timeIntervalSince1970;
+    if (newTime - self.timeStamp < 1) {
+        if (dataTask.countOfBytesReceived != dataTask.countOfBytesExpectedToReceive) {
+            return;
+        }
+    }
+    self.timeStamp = newTime; // 异步线程使用了 atomic 单写多读，只是预防多次回调卡主线程，所以问题不大
     if (self.downloadProgress) {
         self.downloadProgress(dataTask.countOfBytesReceived + self.startLenght,dataTask.countOfBytesExpectedToReceive + self.startLenght);
     }
