@@ -14,6 +14,7 @@
 @interface JYNetWorkService : NSObject
 
 + (instancetype)shared;
+- (void)removeDownloadManagerForType:(EDownloadType)type;
 
 // 默认 EDownloadTypeNone
 - (void)downloadContent:(JYDownloadContent *)aContent onProgress:(void(^)(int64_t completeBytes, int64_t totalBytes))aProgress Complete:(void(^)(JYDownloadContent* aContent, NSError* aError))aComplete;

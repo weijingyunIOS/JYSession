@@ -67,10 +67,16 @@
     if (downloadManager == nil) {
         downloadManager = [[JYDownloadManager alloc] init];
         downloadManager.downloadPath = [[JYNetWorkConfig shared].netWorkDirectory stringByAppendingPathComponent:typeName];
+        downloadManager.type = type;
         downloadManager.maxDownLoad = [[JYNetWorkConfig shared] getMaxDownloadForType:type];
         [self setDownloadManager:downloadManager forType:type];
     }
     return downloadManager;
+}
+
+- (void)removeDownloadManagerForType:(EDownloadType)type{
+    NSString *typeName = [[JYNetWorkConfig shared] getDownloadType:type];
+    [self.downloadDicM removeObjectForKey:typeName];
 }
 
 #pragma mark - downloadManager数据库操作

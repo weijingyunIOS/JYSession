@@ -55,8 +55,9 @@
         [[JYNetWorkService shared] insertDownloadContent:aContent];
     }
     
-    aContent.downLoadState = EDownloadStateGoing;
+    
     __weak typeof(JYDownloadManager*)weakSelf = self;
+    aContent.downLoadState = EDownloadStateGoing;
     download.successBlock = ^(JYDownload *aCmd){
         aContent.downLoadState = EDownloadStateFinish;
         [[JYNetWorkService shared] insertDownloadContent:aContent];
@@ -64,6 +65,7 @@
             aComplete(aCmd.aContent,nil);
         }
         [weakSelf.downloadDicM removeObjectForKey:key];
+        [weakSelf finish];
     };
     
     download.failBlock = ^(JYDownload*aCmd, NSError*aError){
@@ -78,7 +80,8 @@
         if (aComplete) {
             aComplete(nil,aError);
         }
-        [self.downloadDicM removeObjectForKey:key];
+        [weakSelf.downloadDicM removeObjectForKey:key];
+        [weakSelf finish];
     };
     
     download.downloadProgress = ^(int64_t completeBytes, int64_t totalBytes){
@@ -104,10 +107,18 @@
     }];
 }
 
+- (void)finish{
+    if (self.downloadDicM.count > 0) {
+        return;
+    }
+    [[JYNetWorkService shared] removeDownloadManagerForType:self.type];
+    [self.session invalidateAndCancel];
+}
+
 #pragma mark - NSURLSessionDelegate
 
 - (void)URLSession:(NSURLSession *)session didBecomeInvalidWithError:(NSError *)error {
-    NSLog(@"%s", __func__);
+//    NSLog(@"%s", __func__);
 }
 
 #pragma mark - NSURLSessionTaskDelegate
@@ -144,6 +155,10 @@
         _downloadDicM = [[NSMutableDictionary alloc] init];
     }
     return _downloadDicM;
+}
+
+- (void)dealloc{
+    NSLog(@"%s",__func__);
 }
 
 @end

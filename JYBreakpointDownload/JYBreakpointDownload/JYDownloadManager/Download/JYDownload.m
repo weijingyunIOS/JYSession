@@ -39,19 +39,19 @@ typedef NS_ENUM(NSUInteger, EDownloadFinishType) {
         weakSelf.aContent.serverFileSize = length;
         NSString *contentType = headerFields[@"Content-Type"];
         weakSelf.fileType = [contentType deleteBeforeString:@"/"];
-        NSInteger type = [self needDownload:length];
+        NSInteger type = [weakSelf needDownload:length];
         switch (type) {
             case EDownloadNone:
                 [weakSelf downloadWithStart:-1];
                 break;
                 
             case EDownloadRange:
-                [self downloadWithStart:[self getLocalFileLength]];
+                [weakSelf downloadWithStart:[weakSelf getLocalFileLength]];
                 break;
                 
             case EDownloadEnd:
                 // 成功
-                [self notifySuccess];
+                [weakSelf notifySuccess];
                 break;
                 
             default:
