@@ -32,4 +32,6 @@ typedef NS_ENUM(NSUInteger, EDownloadState) {
 // 必须重写该方法 用于保存信息
 - (void)saveToDB;
 
++ (NSArray<NSString *> *)appedExtenArray:(NSArray <NSString*>*)aExtens;
+
 @end

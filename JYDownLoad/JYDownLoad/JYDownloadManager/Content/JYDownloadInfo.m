@@ -31,4 +31,12 @@
     NSLog(@"%s",__func__);
 }
 
++ (NSArray<NSString *> *)appedExtenArray:(NSArray <NSString*>*)aExtens{
+    NSMutableArray *arryM = [[NSMutableArray alloc] initWithArray:@[@"urlString",@"downLoadState",@"relativePath",@"serverFileSize"]];
+    if (aExtens.count > 0) {
+        [arryM addObjectsFromArray:aExtens];
+    }
+    return [arryM copy];
+}
+
 @end
