@@ -13,7 +13,7 @@
 - (void)configTableName{
     
     self.contentClass = [ArtBookInfo class];
-    self.tableName = @"JYContentTable";
+    self.tableName = @"ArtBookTable";
 }
 
 - (NSString *)contentId{
