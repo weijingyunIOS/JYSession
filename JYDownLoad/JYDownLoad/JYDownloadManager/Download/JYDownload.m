@@ -123,7 +123,7 @@ typedef NS_ENUM(NSUInteger, EDownloadFinishType) {
     if (self.downloadProgress) {
         self.downloadProgress(dataTask.countOfBytesReceived + self.startLenght,dataTask.countOfBytesExpectedToReceive + self.startLenght);
     }
-    NSLog(@"%tu    %tu",dataTask.countOfBytesReceived + self.startLenght,dataTask.countOfBytesExpectedToReceive + self.startLenght);
+//    NSLog(@"%tu    %tu",dataTask.countOfBytesReceived + self.startLenght,dataTask.countOfBytesExpectedToReceive + self.startLenght);
 }
 
 

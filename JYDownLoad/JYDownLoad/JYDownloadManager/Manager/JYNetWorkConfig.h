@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSUInteger, EDownloadType) {
-    EDownloadTypeNone
+    EDownloadBook
 };
 
 @interface JYNetWorkConfig : NSObject

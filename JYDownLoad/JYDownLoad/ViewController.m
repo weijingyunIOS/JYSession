@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "ArtNetWorkService+downBook.h"
 
 @interface ViewController ()
 
@@ -66,21 +67,24 @@
 //    NSInteger count = [[JYNetWorkService shared] getDownloadUnFinishCountType:EDownloadTypeNone];
 //    NSLog(@"%@ -- %tu",infos.lastObject.extenInfo,count);
 //}
-//
-//- (void)start1:(UIButton *)but{
-//    JYDownloadContent *aContent = [[JYDownloadContent alloc] init];
-//    aContent.urlString = @"http://static.meishubao.com/video/2016-05-18/mCah6DSkD5.mp4";
-//    aContent.contentID = @"123";
-//    aContent.extenInfo = @{@"11":@"11",@"22":@[@"aa",@"aa1"]};
-//    [[JYNetWorkService shared] downloadContent:aContent onProgress:^(int64_t completeBytes, int64_t totalBytes) {
-//        
-//    } Complete:^(JYDownloadContent* aContent, NSError *aError) {
-//        NSLog(@"%@",aContent.finishPath);
-//        NSLog(@"%@",aError);
-//    }];
-//}
-//
-//- (void)start2:(UIButton *)but{
+
+- (void)start1:(UIButton *)but{
+    ArtBookInfo *aBook = [[ArtBookInfo alloc] init];
+    aBook.urlString = @"http://static.meishubao.com/video/2016-05-18/mCah6DSkD5.mp4";
+    aBook.bookID = @"123";
+    aBook.bookName = @"bookName";
+    [[ArtNetWorkService shared] downloadBookInfo:aBook onProgress:^(int64_t completeBytes, int64_t totalBytes) {
+        NSLog(@"%f",completeBytes / (CGFloat)(totalBytes));
+    } Complete:^(ArtBookInfo *aBook, NSError *aError) {
+        if (aError != nil) {
+            NSLog(@"%@",[aError localizedDescription]);
+            return;
+        }
+        NSLog(@"%@-%@-%@-%@",aBook.bookID,aBook.bookName,aBook.urlString,aBook.finishPath);
+    }];
+}
+
+- (void)start2:(UIButton *)but{
 //    JYDownloadContent *aContent = [[JYDownloadContent alloc] init];
 //    aContent.contentID = @"456";
 //    aContent.urlString = @"http://192.168.1.126/resources/HHHorizontalPagingView.zip.1";
@@ -90,15 +94,15 @@
 //        NSLog(@"%@",aContent.finishPath);
 //        NSLog(@"%@",aError);
 //    }];
-//}
-//
-//- (void)cancel1:(UIButton*)but{
-//    [[JYNetWorkService shared] cancelUrlString:@"http://static.meishubao.com/video/2016-05-18/mCah6DSkD5.mp4"];
-//}
-//
-//- (void)cancel2:(UIButton*)but{
+}
+
+- (void)cancel1:(UIButton*)but{
+    [[ArtNetWorkService shared] cancelBookUrlString:@"http://static.meishubao.com/video/2016-05-18/mCah6DSkD5.mp4"];
+}
+
+- (void)cancel2:(UIButton*)but{
 //    [[JYNetWorkService shared] cancelUrlString:@"http://192.168.1.126/resources/qwe.mp4"];
-//}
+}
 
 - (UIButton *)addButtonTitle:(NSString*)aTitle action:(SEL)aSel{
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];

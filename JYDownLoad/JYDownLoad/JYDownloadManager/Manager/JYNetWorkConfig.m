@@ -7,6 +7,7 @@
 //
 
 #import "JYNetWorkConfig.h"
+#import "ArtNetWorkService.h"
 
 @implementation JYNetWorkConfig
 
@@ -38,8 +39,8 @@
 - (NSString *)getDownloadType:(EDownloadType)aType{
     NSString *typeName = @"";
     switch (aType) {
-        case EDownloadTypeNone:
-            typeName = @"EDownloadTypeNone";
+        case EDownloadBook:
+            typeName = @"EDownloadBook";
             break;
             
         default:
@@ -53,14 +54,7 @@
 }
 
 - (void)removeDownloadManagerForType:(EDownloadType)aType{
-    switch (aType) {
-        case EDownloadTypeNone:
-            NSLog(@"移除必要的");
-            break;
-            
-        default:
-            break;
-    }
+    [[ArtNetWorkService shared] removeDownloadManagerForType:aType];
 }
 
 @end

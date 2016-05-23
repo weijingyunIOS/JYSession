@@ -33,9 +33,19 @@
     return globalService;
 }
 
-- (void)downloadType:(EDownloadType)type content:(JYDownloadInfo *)aContent onProgress:(void(^)(int64_t completeBytes, int64_t totalBytes))aProgress Complete:(void(^)(JYDownloadInfo* aContent, NSError* aError))aComplete{
+- (void)downloadType:(EDownloadType)type content:(JYDownloadInfo *)aContent onProgress:(void(^)(int64_t completeBytes, int64_t totalBytes))aProgress Complete:(void(^)(id aContent, NSError* aError))aComplete{
     JYDownloadManager *downloadManager = [self getDownloadManagerForType:type];
     [downloadManager downloadContent:aContent onProgress:aProgress Complete:aComplete];
+}
+
+- (void)canceltype:(EDownloadType)type UrlString:(NSString *)urlString{
+    JYDownloadManager *downloadManager = [self getDownloadManagerForType:type];
+    [downloadManager cancelUrlString:urlString];
+}
+
+- (void)cancelBlockType:(EDownloadType)type{
+    JYDownloadManager *downloadManager = [self getDownloadManagerForType:type];
+    [downloadManager cancelBlock];
 }
 
 #pragma mark - downloadManager 创建
