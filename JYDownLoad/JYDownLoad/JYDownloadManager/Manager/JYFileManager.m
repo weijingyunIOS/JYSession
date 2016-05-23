@@ -30,7 +30,9 @@
 }
 
 + (NSString *)getRootPath:(NSString*)rootPath with:(NSString*)filePath fileName:(NSString*)fileName{
-    
+    if (filePath.length <= 0) {
+        return nil;
+    }
     NSString *path = [rootPath stringByAppendingPathComponent:filePath];
     // 如果路径不存在就创建
     NSFileManager* manager = [NSFileManager defaultManager];

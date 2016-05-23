@@ -11,16 +11,12 @@
 
 @interface JYDownloadContent()
 
-@property (nonatomic, assign) EDownloadType  downLoadType;  // 下载类型
 
 @end
 
 @implementation JYDownloadContent
 
 - (NSString *)finishPath{
-    if (self.relativePath.length <= 0) {
-        return nil;
-    }
     return [JYFileManager getCachePathWith:self.relativePath];
 }
 
