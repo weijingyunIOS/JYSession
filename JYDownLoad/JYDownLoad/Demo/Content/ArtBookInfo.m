@@ -7,7 +7,12 @@
 //
 
 #import "ArtBookInfo.h"
+#import "ArtNetWorkService+downBook.h"
 
 @implementation ArtBookInfo
+
+- (void)saveToDB{
+    [[ArtNetWorkService shared] insertBook:self];
+}
 
 @end

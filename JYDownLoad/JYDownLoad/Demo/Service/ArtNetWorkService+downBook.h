@@ -15,4 +15,13 @@
 - (void)cancelBookUrlString:(NSString *)urlString;
 - (void)cancelBookBlock;
 
+- (void)insertBook:(ArtBookInfo *)aBook;
+- (NSArray<ArtBookInfo *> *)getUnFinishBook;
+- (NSInteger)getUnFinishBookCount;
+- (NSArray<ArtBookInfo *> *)getFinishBook;
+- (NSInteger)getFinishBookCount;
+
+- (ArtBookInfo *)getBookByUrlString:(NSString *)urlString;
+- (void)deleteBookByUrlString:(NSString *)urlString;
+
 @end

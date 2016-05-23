@@ -54,6 +54,7 @@
 - (ArtBookTable *)bookTable{
     if (!_bookTable) {
         _bookTable = [[ArtBookTable alloc] init];
+        _bookTable.dbQueue = self.dbQueue;
     }
     return _bookTable;
 }

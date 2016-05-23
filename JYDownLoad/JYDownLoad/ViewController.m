@@ -44,29 +44,28 @@
     button8.frame = CGRectMake(100, 364, 80, 50);
 }
 
-//- (void)delete1:(UIButton *)but{
-//    JYDownloadContent *aContent = [[JYDownloadContent alloc] init];
-//    aContent.contentID = @"123";
-//    [[JYNetWorkService shared] deleteDownloadContent:aContent];
-//}
-//
-//- (void)delete2:(UIButton *)but{
+- (void)delete1:(UIButton *)but{
+    NSString *urlString = @"http://static.meishubao.com/video/2016-05-18/mCah6DSkD5.mp4";
+    [[ArtNetWorkService shared] deleteBookByUrlString:urlString];
+}
+
+- (void)delete2:(UIButton *)but{
 //    JYDownloadContent *aContent = [[JYDownloadContent alloc] init];
 //    aContent.contentID = @"456";
 //    [[JYNetWorkService shared] deleteDownloadContent:aContent];
-//}
-//
-//- (void)finish:(UIButton *)but{
-//    NSArray<JYDownloadContent*>* infos = [[JYNetWorkService shared] getDownloadFinishType:EDownloadTypeNone];
-//    NSInteger count = [[JYNetWorkService shared] getDownloadFinishCountType:EDownloadTypeNone];
-//    NSLog(@"%@ -- %tu",infos.lastObject.extenInfo,count);
-//}
-//
-//- (void)unfinish:(UIButton *)but{
-//    NSArray<JYDownloadContent*>* infos = [[JYNetWorkService shared] getDownloadUnFinishType:EDownloadTypeNone];
-//    NSInteger count = [[JYNetWorkService shared] getDownloadUnFinishCountType:EDownloadTypeNone];
-//    NSLog(@"%@ -- %tu",infos.lastObject.extenInfo,count);
-//}
+}
+
+- (void)finish:(UIButton *)but{
+    NSArray<ArtBookInfo*>* infos = [[ArtNetWorkService shared] getFinishBook];
+    NSInteger count = [[ArtNetWorkService shared] getFinishBookCount];
+    NSLog(@"%@ -- %tu",infos,count);
+}
+
+- (void)unfinish:(UIButton *)but{
+    NSArray<ArtBookInfo*>* infos = [[ArtNetWorkService shared] getUnFinishBook];
+    NSInteger count = [[ArtNetWorkService shared] getUnFinishBookCount];
+    NSLog(@"%@ -- %tu",infos,count);
+}
 
 - (void)start1:(UIButton *)but{
     ArtBookInfo *aBook = [[ArtBookInfo alloc] init];

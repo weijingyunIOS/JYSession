@@ -22,4 +22,32 @@
     [self cancelBlockType:EDownloadBook];
 }
 
+- (void)insertBook:(ArtBookInfo *)aBook{
+    [self.netWorkDB.bookTable insertContent:aBook];
+}
+
+- (NSArray<ArtBookInfo *> *)getUnFinishBook{
+    return [self.netWorkDB.bookTable getUnFinishDownload];
+}
+
+- (NSInteger)getUnFinishBookCount{
+    return [self.netWorkDB.bookTable getUnFinishDownloadCount];
+}
+
+- (NSArray<JYDownloadInfo *> *)getFinishBook{
+    return [self.netWorkDB.bookTable getFinishDownload];
+}
+
+- (NSInteger)getFinishBookCount{
+    return [self.netWorkDB.bookTable getFinishDownloadCount];
+}
+
+- (JYDownloadInfo *)getBookByUrlString:(NSString *)urlString{
+    return [self.netWorkDB.bookTable getDownloadByUrlString:urlString];
+}
+
+- (void)deleteBookByUrlString:(NSString *)urlString{
+    [self.netWorkDB.bookTable deleteDownloadByUrlString:urlString forType:EDownloadBook];
+}
+
 @end

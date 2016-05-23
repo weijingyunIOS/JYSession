@@ -11,12 +11,13 @@
 
 @interface JYDownloadTable : JYContentTable
 
-- (NSArray<JYDownloadInfo *> *)getDownloadUnFinish;
-- (NSInteger)getDownloadUnFinishCount;
-- (NSArray<JYDownloadInfo *> *)getDownloadFinish;
-- (NSInteger)getDownloadFinishCount;
+- (NSArray*)getUnFinishDownload;
+- (NSInteger)getUnFinishDownloadCount;
+- (NSArray*)getFinishDownload;
+- (NSInteger)getFinishDownloadCount;
 
-- (JYDownloadInfo *)getInfoByUrlString:(NSString *)urlString;
-- (void)deleteInfoByUrlString:(NSString *)urlString;
+- (JYDownloadInfo *)getDownloadByUrlString:(NSString *)urlString;
+- (void)deleteDBByUrlString:(NSString *)urlString;
+- (void)deleteDownloadByUrlString:(NSString *)urlString forType:(EDownloadType)aType;
 
 @end
