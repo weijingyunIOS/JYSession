@@ -13,6 +13,7 @@
 		5C1475A21CF30057007C8D8B /* ArtBookTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1475A11CF30057007C8D8B /* ArtBookTable.m */; };
 		5C1475A81CF306BA007C8D8B /* ArtNetWorkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1475A71CF306BA007C8D8B /* ArtNetWorkService.m */; };
 		5C1475AB1CF30811007C8D8B /* ArtNetWorkService+downBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1475AA1CF30811007C8D8B /* ArtNetWorkService+downBook.m */; };
+		5C1475AE1CF3136A007C8D8B /* JYDownloadTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1475AD1CF3136A007C8D8B /* JYDownloadTable.m */; };
 		5C7C5EDA1CF2A435007697F0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7C5ED91CF2A435007697F0 /* main.m */; };
 		5C7C5EDD1CF2A435007697F0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7C5EDC1CF2A435007697F0 /* AppDelegate.m */; };
 		5C7C5EE01CF2A435007697F0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7C5EDF1CF2A435007697F0 /* ViewController.m */; };
@@ -58,6 +59,8 @@
 		5C1475A71CF306BA007C8D8B /* ArtNetWorkService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtNetWorkService.m; sourceTree = "<group>"; };
 		5C1475A91CF30811007C8D8B /* ArtNetWorkService+downBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ArtNetWorkService+downBook.h"; sourceTree = "<group>"; };
 		5C1475AA1CF30811007C8D8B /* ArtNetWorkService+downBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ArtNetWorkService+downBook.m"; sourceTree = "<group>"; };
+		5C1475AC1CF3136A007C8D8B /* JYDownloadTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYDownloadTable.h; sourceTree = "<group>"; };
+		5C1475AD1CF3136A007C8D8B /* JYDownloadTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYDownloadTable.m; sourceTree = "<group>"; };
 		5C7C5ED51CF2A435007697F0 /* JYDownLoad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JYDownLoad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C7C5ED91CF2A435007697F0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5C7C5EDB1CF2A435007697F0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -216,6 +219,8 @@
 			children = (
 				5CA642571CF2DA51000969B3 /* JYDownloadInfo.h */,
 				5CA642581CF2DA51000969B3 /* JYDownloadInfo.m */,
+				5C1475AC1CF3136A007C8D8B /* JYDownloadTable.h */,
+				5C1475AD1CF3136A007C8D8B /* JYDownloadTable.m */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -483,6 +488,7 @@
 				5C1475A81CF306BA007C8D8B /* ArtNetWorkService.m in Sources */,
 				5CA6426F1CF2DA51000969B3 /* JYNetWorkConfig.m in Sources */,
 				5CA6426D1CF2DA51000969B3 /* JYDownloadManager.m in Sources */,
+				5C1475AE1CF3136A007C8D8B /* JYDownloadTable.m in Sources */,
 				5C7C5EDD1CF2A435007697F0 /* AppDelegate.m in Sources */,
 				5C7C5EDA1CF2A435007697F0 /* main.m in Sources */,
 				5C1475AB1CF30811007C8D8B /* ArtNetWorkService+downBook.m in Sources */,

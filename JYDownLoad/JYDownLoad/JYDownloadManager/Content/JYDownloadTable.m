@@ -1,5 +1,5 @@
 //
-//  ArtBookTable.h
+//  JYDownloadTable.m
 //  JYDownLoad
 //
 //  Created by weijingyun on 16/5/23.
@@ -7,7 +7,7 @@
 //
 
 #import "JYDownloadTable.h"
-#import "ArtBookInfo.h"
-@interface ArtBookTable : JYDownloadTable
+
+@implementation JYDownloadTable
 
 @end
