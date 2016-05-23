@@ -9,7 +9,6 @@
 #import "JYDownload.h"
 #import "JYFileManager.h"
 #import "NSString+JYCategory.h"
-#import "JYNetWorkService.h"
 
 typedef NS_ENUM(NSUInteger, EDownloadFinishType) {
     EDownloadNone,    //重新下载
@@ -40,7 +39,7 @@ typedef NS_ENUM(NSUInteger, EDownloadFinishType) {
         weakSelf.aContent.serverFileSize = length;
         NSString *contentType = headerFields[@"Content-Type"];
         weakSelf.fileType = [contentType deleteBeforeString:@"/"];
-        [[JYNetWorkService shared] insertDownloadContent:weakSelf.aContent];
+        [weakSelf.aContent saveToDB];
         NSInteger type = [weakSelf needDownload:length];
         switch (type) {
             case EDownloadNone:
@@ -206,7 +205,7 @@ typedef NS_ENUM(NSUInteger, EDownloadFinishType) {
         NSString *fileName = [self.aContent.urlString MD5String];
         _downloadFilePath = [JYFileManager getCachePathWith:[self.downloadPath stringByAppendingPathComponent:@"unfinished"] fileName:fileName];
         self.aContent.relativePath = [NSString stringWithFormat:@"%@/unfinished/%@",self.downloadPath,fileName];
-        [[JYNetWorkService shared] insertDownloadContent:self.aContent];
+        [self.aContent saveToDB];
     }
     return _downloadFilePath;
 }

@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import "JYNetWorkService.h"
 
 @interface ViewController ()
 
@@ -44,62 +43,62 @@
     button8.frame = CGRectMake(100, 364, 80, 50);
 }
 
-- (void)delete1:(UIButton *)but{
-    JYDownloadContent *aContent = [[JYDownloadContent alloc] init];
-    aContent.contentID = @"123";
-    [[JYNetWorkService shared] deleteDownloadContent:aContent];
-}
-
-- (void)delete2:(UIButton *)but{
-    JYDownloadContent *aContent = [[JYDownloadContent alloc] init];
-    aContent.contentID = @"456";
-    [[JYNetWorkService shared] deleteDownloadContent:aContent];
-}
-
-- (void)finish:(UIButton *)but{
-    NSArray<JYDownloadContent*>* infos = [[JYNetWorkService shared] getDownloadFinishType:EDownloadTypeNone];
-    NSInteger count = [[JYNetWorkService shared] getDownloadFinishCountType:EDownloadTypeNone];
-    NSLog(@"%@ -- %tu",infos.lastObject.extenInfo,count);
-}
-
-- (void)unfinish:(UIButton *)but{
-    NSArray<JYDownloadContent*>* infos = [[JYNetWorkService shared] getDownloadUnFinishType:EDownloadTypeNone];
-    NSInteger count = [[JYNetWorkService shared] getDownloadUnFinishCountType:EDownloadTypeNone];
-    NSLog(@"%@ -- %tu",infos.lastObject.extenInfo,count);
-}
-
-- (void)start1:(UIButton *)but{
-    JYDownloadContent *aContent = [[JYDownloadContent alloc] init];
-    aContent.urlString = @"http://static.meishubao.com/video/2016-05-18/mCah6DSkD5.mp4";
-    aContent.contentID = @"123";
-    aContent.extenInfo = @{@"11":@"11",@"22":@[@"aa",@"aa1"]};
-    [[JYNetWorkService shared] downloadContent:aContent onProgress:^(int64_t completeBytes, int64_t totalBytes) {
-        
-    } Complete:^(JYDownloadContent* aContent, NSError *aError) {
-        NSLog(@"%@",aContent.finishPath);
-        NSLog(@"%@",aError);
-    }];
-}
-
-- (void)start2:(UIButton *)but{
-    JYDownloadContent *aContent = [[JYDownloadContent alloc] init];
-    aContent.contentID = @"456";
-    aContent.urlString = @"http://192.168.1.126/resources/HHHorizontalPagingView.zip.1";
-    [[JYNetWorkService shared] downloadContent:aContent onProgress:^(int64_t completeBytes, int64_t totalBytes) {
-        
-    } Complete:^(JYDownloadContent* aContent, NSError *aError) {
-        NSLog(@"%@",aContent.finishPath);
-        NSLog(@"%@",aError);
-    }];
-}
-
-- (void)cancel1:(UIButton*)but{
-    [[JYNetWorkService shared] cancelUrlString:@"http://static.meishubao.com/video/2016-05-18/mCah6DSkD5.mp4"];
-}
-
-- (void)cancel2:(UIButton*)but{
-    [[JYNetWorkService shared] cancelUrlString:@"http://192.168.1.126/resources/qwe.mp4"];
-}
+//- (void)delete1:(UIButton *)but{
+//    JYDownloadContent *aContent = [[JYDownloadContent alloc] init];
+//    aContent.contentID = @"123";
+//    [[JYNetWorkService shared] deleteDownloadContent:aContent];
+//}
+//
+//- (void)delete2:(UIButton *)but{
+//    JYDownloadContent *aContent = [[JYDownloadContent alloc] init];
+//    aContent.contentID = @"456";
+//    [[JYNetWorkService shared] deleteDownloadContent:aContent];
+//}
+//
+//- (void)finish:(UIButton *)but{
+//    NSArray<JYDownloadContent*>* infos = [[JYNetWorkService shared] getDownloadFinishType:EDownloadTypeNone];
+//    NSInteger count = [[JYNetWorkService shared] getDownloadFinishCountType:EDownloadTypeNone];
+//    NSLog(@"%@ -- %tu",infos.lastObject.extenInfo,count);
+//}
+//
+//- (void)unfinish:(UIButton *)but{
+//    NSArray<JYDownloadContent*>* infos = [[JYNetWorkService shared] getDownloadUnFinishType:EDownloadTypeNone];
+//    NSInteger count = [[JYNetWorkService shared] getDownloadUnFinishCountType:EDownloadTypeNone];
+//    NSLog(@"%@ -- %tu",infos.lastObject.extenInfo,count);
+//}
+//
+//- (void)start1:(UIButton *)but{
+//    JYDownloadContent *aContent = [[JYDownloadContent alloc] init];
+//    aContent.urlString = @"http://static.meishubao.com/video/2016-05-18/mCah6DSkD5.mp4";
+//    aContent.contentID = @"123";
+//    aContent.extenInfo = @{@"11":@"11",@"22":@[@"aa",@"aa1"]};
+//    [[JYNetWorkService shared] downloadContent:aContent onProgress:^(int64_t completeBytes, int64_t totalBytes) {
+//        
+//    } Complete:^(JYDownloadContent* aContent, NSError *aError) {
+//        NSLog(@"%@",aContent.finishPath);
+//        NSLog(@"%@",aError);
+//    }];
+//}
+//
+//- (void)start2:(UIButton *)but{
+//    JYDownloadContent *aContent = [[JYDownloadContent alloc] init];
+//    aContent.contentID = @"456";
+//    aContent.urlString = @"http://192.168.1.126/resources/HHHorizontalPagingView.zip.1";
+//    [[JYNetWorkService shared] downloadContent:aContent onProgress:^(int64_t completeBytes, int64_t totalBytes) {
+//        
+//    } Complete:^(JYDownloadContent* aContent, NSError *aError) {
+//        NSLog(@"%@",aContent.finishPath);
+//        NSLog(@"%@",aError);
+//    }];
+//}
+//
+//- (void)cancel1:(UIButton*)but{
+//    [[JYNetWorkService shared] cancelUrlString:@"http://static.meishubao.com/video/2016-05-18/mCah6DSkD5.mp4"];
+//}
+//
+//- (void)cancel2:(UIButton*)but{
+//    [[JYNetWorkService shared] cancelUrlString:@"http://192.168.1.126/resources/qwe.mp4"];
+//}
 
 - (UIButton *)addButtonTitle:(NSString*)aTitle action:(SEL)aSel{
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];

@@ -32,4 +32,8 @@
     NSLog(@"%s",__func__);
 }
 
+- (void)saveToDB{
+    NSLog(@"%s",__func__);
+}
+
 @end

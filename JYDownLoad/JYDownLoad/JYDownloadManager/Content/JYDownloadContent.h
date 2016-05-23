@@ -32,4 +32,7 @@ typedef NS_ENUM(NSUInteger, EDownloadState) {
 @property (nonatomic, copy, readonly) NSString *finishPath; // 下载完成后(或未完成)的实际地址
 @property (nonatomic, assign) long long currentFileSize;
 
+
+- (void)saveToDB;
+
 @end

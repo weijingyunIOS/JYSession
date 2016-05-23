@@ -52,4 +52,15 @@
     return 3;
 }
 
+- (void)removeDownloadManagerForType:(EDownloadType)aType{
+    switch (aType) {
+        case EDownloadTypeNone:
+            NSLog(@"移除必要的");
+            break;
+            
+        default:
+            break;
+    }
+}
+
 @end

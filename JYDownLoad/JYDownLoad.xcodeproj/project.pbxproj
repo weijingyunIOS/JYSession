@@ -22,9 +22,6 @@
 		5CA6426D1CF2DA51000969B3 /* JYDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA6425E1CF2DA51000969B3 /* JYDownloadManager.m */; };
 		5CA6426E1CF2DA51000969B3 /* JYFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA642601CF2DA51000969B3 /* JYFileManager.m */; };
 		5CA6426F1CF2DA51000969B3 /* JYNetWorkConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA642621CF2DA51000969B3 /* JYNetWorkConfig.m */; };
-		5CA642701CF2DA51000969B3 /* JYNetWorkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA642641CF2DA51000969B3 /* JYNetWorkService.m */; };
-		5CA642711CF2DA51000969B3 /* JYDownloadContentTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA642671CF2DA51000969B3 /* JYDownloadContentTable.m */; };
-		5CA642721CF2DA51000969B3 /* JYNetWorkDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA642691CF2DA51000969B3 /* JYNetWorkDB.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,12 +71,6 @@
 		5CA642601CF2DA51000969B3 /* JYFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYFileManager.m; sourceTree = "<group>"; };
 		5CA642611CF2DA51000969B3 /* JYNetWorkConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYNetWorkConfig.h; sourceTree = "<group>"; };
 		5CA642621CF2DA51000969B3 /* JYNetWorkConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYNetWorkConfig.m; sourceTree = "<group>"; };
-		5CA642631CF2DA51000969B3 /* JYNetWorkService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYNetWorkService.h; sourceTree = "<group>"; };
-		5CA642641CF2DA51000969B3 /* JYNetWorkService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYNetWorkService.m; sourceTree = "<group>"; };
-		5CA642661CF2DA51000969B3 /* JYDownloadContentTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYDownloadContentTable.h; sourceTree = "<group>"; };
-		5CA642671CF2DA51000969B3 /* JYDownloadContentTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYDownloadContentTable.m; sourceTree = "<group>"; };
-		5CA642681CF2DA51000969B3 /* JYNetWorkDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYNetWorkDB.h; sourceTree = "<group>"; };
-		5CA642691CF2DA51000969B3 /* JYNetWorkDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYNetWorkDB.m; sourceTree = "<group>"; };
 		A40FD79B9F0A678F39365E3F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		A6E9EF1F5B5FB143B6D0D3D2 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -183,7 +174,6 @@
 				5CA642561CF2DA51000969B3 /* Content */,
 				5CA642591CF2DA51000969B3 /* Download */,
 				5CA6425C1CF2DA51000969B3 /* Manager */,
-				5CA642651CF2DA51000969B3 /* Storge */,
 			);
 			path = JYDownloadManager;
 			sourceTree = "<group>";
@@ -224,28 +214,31 @@
 				5CA642601CF2DA51000969B3 /* JYFileManager.m */,
 				5CA642611CF2DA51000969B3 /* JYNetWorkConfig.h */,
 				5CA642621CF2DA51000969B3 /* JYNetWorkConfig.m */,
-				5CA642631CF2DA51000969B3 /* JYNetWorkService.h */,
-				5CA642641CF2DA51000969B3 /* JYNetWorkService.m */,
 			);
 			path = Manager;
-			sourceTree = "<group>";
-		};
-		5CA642651CF2DA51000969B3 /* Storge */ = {
-			isa = PBXGroup;
-			children = (
-				5CA642661CF2DA51000969B3 /* JYDownloadContentTable.h */,
-				5CA642671CF2DA51000969B3 /* JYDownloadContentTable.m */,
-				5CA642681CF2DA51000969B3 /* JYNetWorkDB.h */,
-				5CA642691CF2DA51000969B3 /* JYNetWorkDB.m */,
-			);
-			path = Storge;
 			sourceTree = "<group>";
 		};
 		5CA642731CF2DA73000969B3 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				5CA642741CF2F2F2000969B3 /* Service */,
+				5CA642751CF2F2F2000969B3 /* Store */,
 			);
 			path = Demo;
+			sourceTree = "<group>";
+		};
+		5CA642741CF2F2F2000969B3 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		5CA642751CF2F2F2000969B3 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Store;
 			sourceTree = "<group>";
 		};
 		5E26751C19F5AD2BB0E92494 /* Frameworks */ = {
@@ -451,13 +444,10 @@
 				5CA6426B1CF2DA51000969B3 /* JYDownloadContent.m in Sources */,
 				5CA6426A1CF2DA51000969B3 /* NSString+JYCategory.m in Sources */,
 				5C7C5EE01CF2A435007697F0 /* ViewController.m in Sources */,
-				5CA642701CF2DA51000969B3 /* JYNetWorkService.m in Sources */,
 				5CA6426F1CF2DA51000969B3 /* JYNetWorkConfig.m in Sources */,
-				5CA642721CF2DA51000969B3 /* JYNetWorkDB.m in Sources */,
 				5CA6426D1CF2DA51000969B3 /* JYDownloadManager.m in Sources */,
 				5C7C5EDD1CF2A435007697F0 /* AppDelegate.m in Sources */,
 				5C7C5EDA1CF2A435007697F0 /* main.m in Sources */,
-				5CA642711CF2DA51000969B3 /* JYDownloadContentTable.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
