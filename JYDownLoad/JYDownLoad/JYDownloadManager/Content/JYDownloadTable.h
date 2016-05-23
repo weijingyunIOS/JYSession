@@ -7,7 +7,16 @@
 //
 
 #import "JYContentTable.h"
+#import "JYDownloadInfo.h"
 
 @interface JYDownloadTable : JYContentTable
+
+- (NSArray<JYDownloadInfo *> *)getDownloadUnFinish;
+- (NSInteger)getDownloadUnFinishCount;
+- (NSArray<JYDownloadInfo *> *)getDownloadFinish;
+- (NSInteger)getDownloadFinishCount;
+
+- (JYDownloadInfo *)getInfoByUrlString:(NSString *)urlString;
+- (void)deleteInfoByUrlString:(NSString *)urlString;
 
 @end
