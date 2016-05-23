@@ -17,7 +17,7 @@
 		5C7C5EF31CF2A435007697F0 /* JYDownLoadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7C5EF21CF2A435007697F0 /* JYDownLoadTests.m */; };
 		5C7C5EFE1CF2A435007697F0 /* JYDownLoadUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7C5EFD1CF2A435007697F0 /* JYDownLoadUITests.m */; };
 		5CA6426A1CF2DA51000969B3 /* NSString+JYCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA642551CF2DA51000969B3 /* NSString+JYCategory.m */; };
-		5CA6426B1CF2DA51000969B3 /* JYDownloadContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA642581CF2DA51000969B3 /* JYDownloadContent.m */; };
+		5CA6426B1CF2DA51000969B3 /* JYDownloadInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA642581CF2DA51000969B3 /* JYDownloadInfo.m */; };
 		5CA6426C1CF2DA51000969B3 /* JYDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA6425B1CF2DA51000969B3 /* JYDownload.m */; };
 		5CA6426D1CF2DA51000969B3 /* JYDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA6425E1CF2DA51000969B3 /* JYDownloadManager.m */; };
 		5CA6426E1CF2DA51000969B3 /* JYFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA642601CF2DA51000969B3 /* JYFileManager.m */; };
@@ -61,8 +61,8 @@
 		5C7C5EFF1CF2A435007697F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5CA642541CF2DA51000969B3 /* NSString+JYCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+JYCategory.h"; sourceTree = "<group>"; };
 		5CA642551CF2DA51000969B3 /* NSString+JYCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+JYCategory.m"; sourceTree = "<group>"; };
-		5CA642571CF2DA51000969B3 /* JYDownloadContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYDownloadContent.h; sourceTree = "<group>"; };
-		5CA642581CF2DA51000969B3 /* JYDownloadContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYDownloadContent.m; sourceTree = "<group>"; };
+		5CA642571CF2DA51000969B3 /* JYDownloadInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYDownloadInfo.h; sourceTree = "<group>"; };
+		5CA642581CF2DA51000969B3 /* JYDownloadInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = JYDownloadInfo.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		5CA6425A1CF2DA51000969B3 /* JYDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYDownload.h; sourceTree = "<group>"; };
 		5CA6425B1CF2DA51000969B3 /* JYDownload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYDownload.m; sourceTree = "<group>"; };
 		5CA6425D1CF2DA51000969B3 /* JYDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYDownloadManager.h; sourceTree = "<group>"; };
@@ -190,8 +190,8 @@
 		5CA642561CF2DA51000969B3 /* Content */ = {
 			isa = PBXGroup;
 			children = (
-				5CA642571CF2DA51000969B3 /* JYDownloadContent.h */,
-				5CA642581CF2DA51000969B3 /* JYDownloadContent.m */,
+				5CA642571CF2DA51000969B3 /* JYDownloadInfo.h */,
+				5CA642581CF2DA51000969B3 /* JYDownloadInfo.m */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -441,7 +441,7 @@
 			files = (
 				5CA6426E1CF2DA51000969B3 /* JYFileManager.m in Sources */,
 				5CA6426C1CF2DA51000969B3 /* JYDownload.m in Sources */,
-				5CA6426B1CF2DA51000969B3 /* JYDownloadContent.m in Sources */,
+				5CA6426B1CF2DA51000969B3 /* JYDownloadInfo.m in Sources */,
 				5CA6426A1CF2DA51000969B3 /* NSString+JYCategory.m in Sources */,
 				5C7C5EE01CF2A435007697F0 /* ViewController.m in Sources */,
 				5CA6426F1CF2DA51000969B3 /* JYNetWorkConfig.m in Sources */,

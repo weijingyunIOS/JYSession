@@ -7,13 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "JYDownloadContent.h"
+#import "JYDownloadInfo.h"
 
 @interface JYDownload : NSObject
 
 @property (nonatomic, copy) NSString *downloadPath; // 存储的文件夹
 @property (nonatomic, strong) NSURLSession *session;
-@property (nonatomic, strong) JYDownloadContent *aContent;
+@property (nonatomic, strong) JYDownloadInfo *aContent;
 
 @property (nonatomic, copy) void (^successBlock)(JYDownload*);
 @property (nonatomic, copy) void (^failBlock)(JYDownload*, NSError*);

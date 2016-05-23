@@ -1,5 +1,5 @@
 //
-//  JYDownloadContent.h
+//  JYDownloadInfo.h
 //  JYBreakpointDownload
 //
 //  Created by weijingyun on 16/5/19.
@@ -17,7 +17,7 @@ typedef NS_ENUM(NSUInteger, EDownloadState) {
     EDownloadStateFinish   // 完成
 };
 
-@interface JYDownloadContent : NSObject
+@interface JYDownloadInfo : NSObject
 
 @property (nonatomic, copy) NSString *urlString;
 @property (nonatomic, assign) EDownloadState downLoadState;

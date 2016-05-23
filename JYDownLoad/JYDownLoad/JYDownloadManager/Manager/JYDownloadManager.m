@@ -27,7 +27,7 @@
     return self;
 }
 
-- (void)downloadContent:(JYDownloadContent *)aContent onProgress:(void(^)(int64_t completeBytes, int64_t totalBytes))aProgress Complete:(void(^)(JYDownloadContent* aContent, NSError* aError))aComplete{
+- (void)downloadContent:(JYDownloadInfo *)aContent onProgress:(void(^)(int64_t completeBytes, int64_t totalBytes))aProgress Complete:(void(^)(JYDownloadInfo* aContent, NSError* aError))aComplete{
     if (aContent.urlString.length <= 0) {
         NSLog(@"下载链接不能为空－－－－－");
         return;

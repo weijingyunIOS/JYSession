@@ -1,21 +1,20 @@
 //
-//  JYDownloadContent.m
+//  JYDownloadInfo.m
 //  JYBreakpointDownload
 //
 //  Created by weijingyun on 16/5/19.
 //  Copyright © 2016年 weijingyun. All rights reserved.
 //
 
-#import "JYDownloadContent.h"
+#import "JYDownloadInfo.h"
 #import "JYFileManager.h"
 
-@interface JYDownloadContent()
+@interface JYDownloadInfo()
 
 
 @end
 
-@implementation JYDownloadContent
-
+@implementation JYDownloadInfo
 - (NSString *)finishPath{
     return [JYFileManager getCachePathWith:self.relativePath];
 }
