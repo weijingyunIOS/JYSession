@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "ArtNetWorkService+downBook.h"
+#import "ArtNetWorkService+downVideo.h"
 
 @interface ViewController ()
 
@@ -50,21 +51,28 @@
 }
 
 - (void)delete2:(UIButton *)but{
-//    JYDownloadContent *aContent = [[JYDownloadContent alloc] init];
-//    aContent.contentID = @"456";
-//    [[JYNetWorkService shared] deleteDownloadContent:aContent];
+    NSString *urlString = @"http://static.meishubao.com/video/2016-05-18/mCah6DSkD5.mp4";
+    [[ArtNetWorkService shared] deleteVideoByUrlString:urlString];
 }
 
 - (void)finish:(UIButton *)but{
     NSArray<ArtBookInfo*>* infos = [[ArtNetWorkService shared] getFinishBook];
     NSInteger count = [[ArtNetWorkService shared] getFinishBookCount];
     NSLog(@"%@ -- %tu",infos,count);
+    
+    NSArray<ArtVideoInfo*>* videoInfos = [[ArtNetWorkService shared] getFinishVideo];
+    NSInteger videoCount = [[ArtNetWorkService shared] getFinishVideoCount];
+    NSLog(@"%@ -- %tu",videoInfos,videoCount);
 }
 
 - (void)unfinish:(UIButton *)but{
     NSArray<ArtBookInfo*>* infos = [[ArtNetWorkService shared] getUnFinishBook];
     NSInteger count = [[ArtNetWorkService shared] getUnFinishBookCount];
     NSLog(@"%@ -- %tu",infos,count);
+    
+    NSArray<ArtVideoInfo*>* videoInfos = [[ArtNetWorkService shared] getUnFinishVideo];
+    NSInteger videoCount = [[ArtNetWorkService shared] getUnFinishVideoCount];
+    NSLog(@"%@ -- %tu",videoInfos,videoCount);
 }
 
 - (void)start1:(UIButton *)but{
@@ -84,15 +92,19 @@
 }
 
 - (void)start2:(UIButton *)but{
-//    JYDownloadContent *aContent = [[JYDownloadContent alloc] init];
-//    aContent.contentID = @"456";
-//    aContent.urlString = @"http://192.168.1.126/resources/HHHorizontalPagingView.zip.1";
-//    [[JYNetWorkService shared] downloadContent:aContent onProgress:^(int64_t completeBytes, int64_t totalBytes) {
-//        
-//    } Complete:^(JYDownloadContent* aContent, NSError *aError) {
-//        NSLog(@"%@",aContent.finishPath);
-//        NSLog(@"%@",aError);
-//    }];
+    ArtVideoInfo *aVideo = [[ArtVideoInfo alloc] init];
+    aVideo.urlString = @"http://static.meishubao.com/video/2016-05-18/mCah6DSkD5.mp4";
+    aVideo.videoID = @"video123";
+    aVideo.videoDesc = @"videoDesc";
+    [[ArtNetWorkService shared] downloadVideoInfo:aVideo onProgress:^(int64_t completeBytes, int64_t totalBytes) {
+        NSLog(@"%f",completeBytes / (CGFloat)(totalBytes));
+    } Complete:^(ArtVideoInfo *aVideo, NSError *aError) {
+        if (aError != nil) {
+            NSLog(@"%@",[aError localizedDescription]);
+            return;
+        }
+        NSLog(@"%@-%@-%@-%@",aVideo.videoID,aVideo.videoDesc,aVideo.urlString,aVideo.finishPath);
+    }];
 }
 
 - (void)cancel1:(UIButton*)but{
@@ -100,7 +112,7 @@
 }
 
 - (void)cancel2:(UIButton*)but{
-//    [[JYNetWorkService shared] cancelUrlString:@"http://192.168.1.126/resources/qwe.mp4"];
+    [[ArtNetWorkService shared] cancelVideoUrlString:@"http://static.meishubao.com/video/2016-05-18/mCah6DSkD5.mp4"];
 }
 
 - (UIButton *)addButtonTitle:(NSString*)aTitle action:(SEL)aSel{

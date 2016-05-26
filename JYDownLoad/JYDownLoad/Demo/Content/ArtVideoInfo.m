@@ -7,7 +7,16 @@
 //
 
 #import "ArtVideoInfo.h"
+#import "ArtNetWorkService+downVideo.h"
 
 @implementation ArtVideoInfo
+
+- (void)saveToDB{
+    [[ArtNetWorkService shared] insertVideo:self];
+}
+
+- (instancetype)getDBInfo{
+    return [[ArtNetWorkService shared] getVideoByUrlString:self.urlString];
+}
 
 @end
