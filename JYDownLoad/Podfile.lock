@@ -4,12 +4,15 @@ PODS:
   - FMDB/standard (2.6.2)
   - JYDataBase (1.0.1):
     - FMDB (~> 2.6.2)
+  - Masonry (1.0.0)
 
 DEPENDENCIES:
   - JYDataBase
+  - Masonry
 
 SPEC CHECKSUMS:
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
   JYDataBase: c85a756dd328b742887c8de2d7984496021b10a5
+  Masonry: b529bb169217897b6354d4b56b1fada6d475b13d
 
 COCOAPODS: 0.39.0

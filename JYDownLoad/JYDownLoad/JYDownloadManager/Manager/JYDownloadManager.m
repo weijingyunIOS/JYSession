@@ -70,12 +70,12 @@
     download.failBlock = ^(JYDownload*aCmd, NSError*aError){
         if (aError.code != -999) {
             aContent.downLoadState = EDownloadStateFaile;
-        }else {
-            aContent.downLoadState = EDownloadStatePause;
+            [aContent saveToDB];
+        }else if (aContent.downLoadState == EDownloadStatePause){
             aError = [NSError errorWithDomain:@"暂停下载" code:0 userInfo:@{@"NSLocalizedDescription" : @"暂停下载"}];
+            [aContent saveToDB];
         }
         
-        [aContent saveToDB];
         if (aComplete) {
             aComplete(nil,aError);
         }
@@ -86,15 +86,25 @@
     download.downloadProgress = ^(int64_t completeBytes, int64_t totalBytes){
         if (aProgress) {
             dispatch_async(dispatch_get_main_queue(), ^{
+                aContent.downLoadSize = completeBytes;
                 aProgress(completeBytes,totalBytes);
             });
         }
     };
 }
 
+- (void)deleteUrlString:(NSString *)urlString{
+    [self cancelState:EDownloadStateDelete url:urlString];
+}
+
 - (void)cancelUrlString:(NSString *)urlString{
+    [self cancelState:EDownloadStatePause url:urlString];
+}
+
+- (void)cancelState:(EDownloadState)state url:(NSString *)urlString{
     NSString *key = [urlString MD5String];
-     JYDownload *download = self.downloadDicM[key];
+    JYDownload *download = self.downloadDicM[key];
+    download.aContent.downLoadState = state;
     [download cancel];
 }
 

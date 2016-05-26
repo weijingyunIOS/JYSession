@@ -38,7 +38,12 @@
     [downloadManager downloadContent:aContent onProgress:aProgress Complete:aComplete];
 }
 
-- (void)canceltype:(EDownloadType)type UrlString:(NSString *)urlString{
+- (void)deletetype:(EDownloadType)type urlString:(NSString *)urlString{
+    JYDownloadManager *downloadManager = [self getDownloadManagerForType:type];
+    [downloadManager deleteUrlString:urlString];
+}
+
+- (void)canceltype:(EDownloadType)type urlString:(NSString *)urlString{
     JYDownloadManager *downloadManager = [self getDownloadManagerForType:type];
     [downloadManager cancelUrlString:urlString];
 }

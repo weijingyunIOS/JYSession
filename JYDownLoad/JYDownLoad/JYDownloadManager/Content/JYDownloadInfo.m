@@ -57,6 +57,9 @@
         objc_property_t *properties = class_copyPropertyList(infoClass, &outCount);
         for (NSInteger index = 0; index < outCount; index++) {
             NSString *tmpName = [NSString stringWithFormat:@"%s",property_getName(properties[index])];
+            if ([tmpName isEqualToString:@"finishPath"] || [tmpName isEqualToString:@"currentFileSize"]) {
+                continue;
+            }
             NSObject *tmpValue = [aInfo valueForKey:tmpName];
             if (tmpValue && ![tmpValue isEqual:@(0)]) {
                 [self setValue:tmpValue forKey:tmpName];

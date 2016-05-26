@@ -7,7 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+@class  JYDownloadInfo,ArtDownCell;
 
 @interface ArtDownViewController : UIViewController
+
+@property (nonatomic, strong) NSArray *unfinsh;
+@property (nonatomic, strong) NSArray *finsh;
+@property (nonatomic, strong, readonly) UITableView *tableView;
+
+- (void)reload;
+- (void)downloadForCell:(ArtDownCell *)aCell info:(JYDownloadInfo *)aInfo;
+- (void)cacleForInfo:(JYDownloadInfo *)aInfo;
+- (void)deleteDownForInfo:(JYDownloadInfo *)aInfo;
+- (void)cacleBlock;
 
 @end

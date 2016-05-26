@@ -15,7 +15,7 @@
 }
 
 - (void)cancelBookUrlString:(NSString *)urlString{
-    [self canceltype:EDownloadBook UrlString:urlString];
+    [self canceltype:EDownloadBook urlString:urlString];
 }
 
 - (void)cancelBookBlock{

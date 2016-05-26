@@ -27,6 +27,8 @@
 		5CA302F61CF6DEF70060C067 /* ArtVideoTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA302EE1CF6DEF70060C067 /* ArtVideoTable.m */; };
 		5CA302FC1CF6DFB60060C067 /* ArtDownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA302FB1CF6DFB60060C067 /* ArtDownViewController.m */; };
 		5CA302FF1CF6E0340060C067 /* ArtDownCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA302FE1CF6E0340060C067 /* ArtDownCell.m */; };
+		5CA303021CF6F9400060C067 /* ArtBookDownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA303011CF6F9400060C067 /* ArtBookDownViewController.m */; };
+		5CA303051CF6F9C10060C067 /* ArtVideoDownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA303041CF6F9C10060C067 /* ArtVideoDownViewController.m */; };
 		5CA6426A1CF2DA51000969B3 /* NSString+JYCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA642551CF2DA51000969B3 /* NSString+JYCategory.m */; };
 		5CA6426B1CF2DA51000969B3 /* JYDownloadInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA642581CF2DA51000969B3 /* JYDownloadInfo.m */; };
 		5CA6426C1CF2DA51000969B3 /* JYDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA6425B1CF2DA51000969B3 /* JYDownload.m */; };
@@ -92,6 +94,10 @@
 		5CA302FB1CF6DFB60060C067 /* ArtDownViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtDownViewController.m; sourceTree = "<group>"; };
 		5CA302FD1CF6E0340060C067 /* ArtDownCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtDownCell.h; sourceTree = "<group>"; };
 		5CA302FE1CF6E0340060C067 /* ArtDownCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtDownCell.m; sourceTree = "<group>"; };
+		5CA303001CF6F9400060C067 /* ArtBookDownViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtBookDownViewController.h; sourceTree = "<group>"; };
+		5CA303011CF6F9400060C067 /* ArtBookDownViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtBookDownViewController.m; sourceTree = "<group>"; };
+		5CA303031CF6F9C10060C067 /* ArtVideoDownViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtVideoDownViewController.h; sourceTree = "<group>"; };
+		5CA303041CF6F9C10060C067 /* ArtVideoDownViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtVideoDownViewController.m; sourceTree = "<group>"; };
 		5CA642541CF2DA51000969B3 /* NSString+JYCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+JYCategory.h"; sourceTree = "<group>"; };
 		5CA642551CF2DA51000969B3 /* NSString+JYCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+JYCategory.m"; sourceTree = "<group>"; };
 		5CA642571CF2DA51000969B3 /* JYDownloadInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYDownloadInfo.h; sourceTree = "<group>"; };
@@ -271,6 +277,10 @@
 			children = (
 				5CA302FA1CF6DFB60060C067 /* ArtDownViewController.h */,
 				5CA302FB1CF6DFB60060C067 /* ArtDownViewController.m */,
+				5CA303001CF6F9400060C067 /* ArtBookDownViewController.h */,
+				5CA303011CF6F9400060C067 /* ArtBookDownViewController.m */,
+				5CA303031CF6F9C10060C067 /* ArtVideoDownViewController.h */,
+				5CA303041CF6F9C10060C067 /* ArtVideoDownViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -534,7 +544,9 @@
 				5CA302F01CF6DEF70060C067 /* ArtVideoInfo.m in Sources */,
 				5CA6426A1CF2DA51000969B3 /* NSString+JYCategory.m in Sources */,
 				5CA302FF1CF6E0340060C067 /* ArtDownCell.m in Sources */,
+				5CA303051CF6F9C10060C067 /* ArtVideoDownViewController.m in Sources */,
 				5CA302EF1CF6DEF70060C067 /* ArtBookInfo.m in Sources */,
+				5CA303021CF6F9400060C067 /* ArtBookDownViewController.m in Sources */,
 				5C7C5EE01CF2A435007697F0 /* ViewController.m in Sources */,
 				5CA302F11CF6DEF70060C067 /* ArtNetWorkService+downBook.m in Sources */,
 				5CA302FC1CF6DFB60060C067 /* ArtDownViewController.m in Sources */,

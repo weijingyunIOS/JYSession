@@ -15,7 +15,7 @@
 }
 
 - (void)cancelVideoUrlString:(NSString *)urlString{
-    [self canceltype:EDownloadVideo UrlString:urlString];
+    [self canceltype:EDownloadVideo urlString:urlString];
 }
 
 - (void)cancelVideoBlock{

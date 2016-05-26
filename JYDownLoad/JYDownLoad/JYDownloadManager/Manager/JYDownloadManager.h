@@ -17,6 +17,7 @@
 
 - (void)downloadContent:(JYDownloadInfo *)aContent onProgress:(void(^)(int64_t completeBytes, int64_t totalBytes))aProgress Complete:(void(^)(JYDownloadInfo* aContent, NSError* aError))aComplete;
 
+- (void)deleteUrlString:(NSString *)urlString;
 - (void)cancelUrlString:(NSString *)urlString;
 
 // 取消block进度回调，线程切换 卡性能

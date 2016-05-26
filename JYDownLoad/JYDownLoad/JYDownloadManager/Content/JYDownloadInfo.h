@@ -14,7 +14,8 @@ typedef NS_ENUM(NSUInteger, EDownloadState) {
     EDownloadStateGoing,   // 下载中
     EDownloadStatePause,   // 暂停
     EDownloadStateFaile,   // 失败
-    EDownloadStateFinish   // 完成
+    EDownloadStateFinish,  // 完成
+    EDownloadStateDelete   // 删除 删除不要保存
 };
 
 @interface JYDownloadInfo : NSObject
@@ -27,7 +28,8 @@ typedef NS_ENUM(NSUInteger, EDownloadState) {
 
 // 以下下属性不保存数据库
 @property (nonatomic, copy, readonly) NSString *finishPath; // 下载完成后(或未完成)的实际地址
-@property (nonatomic, assign) long long currentFileSize;
+@property (nonatomic, assign, readonly) long long currentFileSize; // 查询文件路径大小（真实）
+@property (nonatomic, assign) long long downLoadSize; // 记录大小只有下载才有
 
 
 // 必须重写该方法 用于保存信息

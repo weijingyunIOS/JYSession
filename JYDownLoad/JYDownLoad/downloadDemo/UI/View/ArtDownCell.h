@@ -7,9 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+@class JYDownloadInfo;
 
 @interface ArtDownCell : UITableViewCell
 
++ (CGFloat)height;
 
+- (void)updateProgress:(JYDownloadInfo*)aInfo;
+- (void)updateInfo:(JYDownloadInfo*)aInfo;
+- (void)updateState:(JYDownloadInfo*)aInfo;
 
 @end

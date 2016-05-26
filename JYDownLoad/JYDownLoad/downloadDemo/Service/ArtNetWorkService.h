@@ -19,7 +19,8 @@
 - (void)removeDownloadManagerForType:(EDownloadType)aType;
 - (void)downloadType:(EDownloadType)type content:(JYDownloadInfo *)aContent onProgress:(void(^)(int64_t completeBytes, int64_t totalBytes))aProgress Complete:(void(^)(id aContent, NSError* aError))aComplete;
 
-- (void)canceltype:(EDownloadType)type UrlString:(NSString *)urlString;
+- (void)deletetype:(EDownloadType)type urlString:(NSString *)urlString;
+- (void)canceltype:(EDownloadType)type urlString:(NSString *)urlString;
 - (void)cancelBlockType:(EDownloadType)type;
 
 @end

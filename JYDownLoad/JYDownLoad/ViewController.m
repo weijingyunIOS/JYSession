@@ -9,7 +9,8 @@
 #import "ViewController.h"
 #import "ArtNetWorkService+downBook.h"
 #import "ArtNetWorkService+downVideo.h"
-#import "ArtDownViewController.h"
+#import "ArtBookDownViewController.h"
+#import "ArtVideoDownViewController.h"
 
 @interface ViewController ()
 
@@ -51,12 +52,15 @@
 }
 
 - (void)push1:(UIButton *)but{
-    ArtDownViewController *vc = [[ArtDownViewController alloc] init];
+    ArtBookDownViewController *vc = [[ArtBookDownViewController alloc] init];
+    vc.title = @"书籍下载";
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)push2:(UIButton *)but{
-    
+    ArtVideoDownViewController *vc = [[ArtVideoDownViewController alloc] init];
+    vc.title = @"视频下载";
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)delete1:(UIButton *)but{
