@@ -25,6 +25,8 @@
 		5CA302F41CF6DEF70060C067 /* ArtBookTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA302EA1CF6DEF70060C067 /* ArtBookTable.m */; };
 		5CA302F51CF6DEF70060C067 /* ArtNetWorkDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA302EC1CF6DEF70060C067 /* ArtNetWorkDB.m */; };
 		5CA302F61CF6DEF70060C067 /* ArtVideoTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA302EE1CF6DEF70060C067 /* ArtVideoTable.m */; };
+		5CA302FC1CF6DFB60060C067 /* ArtDownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA302FB1CF6DFB60060C067 /* ArtDownViewController.m */; };
+		5CA302FF1CF6E0340060C067 /* ArtDownCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA302FE1CF6E0340060C067 /* ArtDownCell.m */; };
 		5CA6426A1CF2DA51000969B3 /* NSString+JYCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA642551CF2DA51000969B3 /* NSString+JYCategory.m */; };
 		5CA6426B1CF2DA51000969B3 /* JYDownloadInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA642581CF2DA51000969B3 /* JYDownloadInfo.m */; };
 		5CA6426C1CF2DA51000969B3 /* JYDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA6425B1CF2DA51000969B3 /* JYDownload.m */; };
@@ -86,6 +88,10 @@
 		5CA302EC1CF6DEF70060C067 /* ArtNetWorkDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtNetWorkDB.m; sourceTree = "<group>"; };
 		5CA302ED1CF6DEF70060C067 /* ArtVideoTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtVideoTable.h; sourceTree = "<group>"; };
 		5CA302EE1CF6DEF70060C067 /* ArtVideoTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtVideoTable.m; sourceTree = "<group>"; };
+		5CA302FA1CF6DFB60060C067 /* ArtDownViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtDownViewController.h; sourceTree = "<group>"; };
+		5CA302FB1CF6DFB60060C067 /* ArtDownViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtDownViewController.m; sourceTree = "<group>"; };
+		5CA302FD1CF6E0340060C067 /* ArtDownCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtDownCell.h; sourceTree = "<group>"; };
+		5CA302FE1CF6E0340060C067 /* ArtDownCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtDownCell.m; sourceTree = "<group>"; };
 		5CA642541CF2DA51000969B3 /* NSString+JYCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+JYCategory.h"; sourceTree = "<group>"; };
 		5CA642551CF2DA51000969B3 /* NSString+JYCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+JYCategory.m"; sourceTree = "<group>"; };
 		5CA642571CF2DA51000969B3 /* JYDownloadInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYDownloadInfo.h; sourceTree = "<group>"; };
@@ -200,6 +206,7 @@
 				5CA302DC1CF6DEF70060C067 /* Content */,
 				5CA302E11CF6DEF70060C067 /* Service */,
 				5CA302E81CF6DEF70060C067 /* Store */,
+				5CA302F71CF6DF220060C067 /* UI */,
 			);
 			path = downloadDemo;
 			sourceTree = "<group>";
@@ -239,6 +246,33 @@
 				5CA302EE1CF6DEF70060C067 /* ArtVideoTable.m */,
 			);
 			path = Store;
+			sourceTree = "<group>";
+		};
+		5CA302F71CF6DF220060C067 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				5CA302F81CF6DF4F0060C067 /* View */,
+				5CA302F91CF6DF4F0060C067 /* ViewController */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		5CA302F81CF6DF4F0060C067 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5CA302FD1CF6E0340060C067 /* ArtDownCell.h */,
+				5CA302FE1CF6E0340060C067 /* ArtDownCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5CA302F91CF6DF4F0060C067 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5CA302FA1CF6DFB60060C067 /* ArtDownViewController.h */,
+				5CA302FB1CF6DFB60060C067 /* ArtDownViewController.m */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		5CA642521CF2DA51000969B3 /* JYDownloadManager */ = {
@@ -499,9 +533,11 @@
 				5CA6426B1CF2DA51000969B3 /* JYDownloadInfo.m in Sources */,
 				5CA302F01CF6DEF70060C067 /* ArtVideoInfo.m in Sources */,
 				5CA6426A1CF2DA51000969B3 /* NSString+JYCategory.m in Sources */,
+				5CA302FF1CF6E0340060C067 /* ArtDownCell.m in Sources */,
 				5CA302EF1CF6DEF70060C067 /* ArtBookInfo.m in Sources */,
 				5C7C5EE01CF2A435007697F0 /* ViewController.m in Sources */,
 				5CA302F11CF6DEF70060C067 /* ArtNetWorkService+downBook.m in Sources */,
+				5CA302FC1CF6DFB60060C067 /* ArtDownViewController.m in Sources */,
 				5CA6426F1CF2DA51000969B3 /* JYNetWorkConfig.m in Sources */,
 				5CA6426D1CF2DA51000969B3 /* JYDownloadManager.m in Sources */,
 				5C1475AE1CF3136A007C8D8B /* JYDownloadTable.m in Sources */,

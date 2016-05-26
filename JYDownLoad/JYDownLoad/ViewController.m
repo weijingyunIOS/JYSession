@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "ArtNetWorkService+downBook.h"
 #import "ArtNetWorkService+downVideo.h"
+#import "ArtDownViewController.h"
 
 @interface ViewController ()
 
@@ -19,7 +20,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
     
     UIButton *button1 = [self addButtonTitle:@"开始1" action:@selector(start1:)];
     button1.frame = CGRectMake(0, 64, 80, 50);
@@ -43,6 +43,20 @@
     button7.frame = CGRectMake(0, 364, 80, 50);
     UIButton *button8 = [self addButtonTitle:@"删除2" action:@selector(delete2:)];
     button8.frame = CGRectMake(100, 364, 80, 50);
+    
+    UIButton *but1 = [self addButtonTitle:@"bookDown" action:@selector(push1:)];
+    but1.frame = CGRectMake(0, 464, 100, 50);
+    UIButton *but2 = [self addButtonTitle:@"videoDown" action:@selector(push2:)];
+    but2.frame = CGRectMake(150, 464, 100, 50);
+}
+
+- (void)push1:(UIButton *)but{
+    ArtDownViewController *vc = [[ArtDownViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)push2:(UIButton *)but{
+    
 }
 
 - (void)delete1:(UIButton *)but{
