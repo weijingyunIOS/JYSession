@@ -14,6 +14,9 @@
 
 @implementation JYDownloadTable
 
+- (BOOL)enableCache{
+    return NO;
+}
 
 - (NSArray<JYDownloadInfo *> *)getUnFinishDownload{
     return [self getContentByConditions:^(JYQueryConditions *make) {

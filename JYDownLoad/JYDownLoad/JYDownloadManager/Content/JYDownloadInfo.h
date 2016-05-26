@@ -19,6 +19,7 @@ typedef NS_ENUM(NSUInteger, EDownloadState) {
 
 @interface JYDownloadInfo : NSObject
 
+@property (nonatomic, copy) NSString *eTag;                 // 文件标识
 @property (nonatomic, copy) NSString *urlString;
 @property (nonatomic, assign) EDownloadState downLoadState;
 @property (nonatomic, copy) NSString *relativePath;         // 下载完成后(或未完成)的相对地址
@@ -32,6 +33,14 @@ typedef NS_ENUM(NSUInteger, EDownloadState) {
 // 必须重写该方法 用于保存信息
 - (void)saveToDB;
 
+// 根据 aInfo 更新 self 基本数据为 0 也不更新 最好用NSNumber
+- (void)updateInfo:(JYDownloadInfo *)aInfo;
+
+// 会将 self 与数据库 对比 将 self 的非空字段更新到数据库
+- (instancetype)updeToDB;
+
+- (instancetype)getDBInfo;
 + (NSArray<NSString *> *)appedExtenArray:(NSArray <NSString*>*)aExtens;
+
 
 @end

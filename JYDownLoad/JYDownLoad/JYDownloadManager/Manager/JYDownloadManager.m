@@ -33,6 +33,7 @@
         return;
     }
     
+    aContent = [aContent updeToDB];
     NSString *key = [aContent.urlString MD5String];
     JYDownload *download = self.downloadDicM[key];
     if (download == nil) {
@@ -52,9 +53,7 @@
         download.downloadPath = self.downloadPath;
         [self setDownload:download forUrlString:aContent.urlString];
         [download startDownload];
-        [aContent saveToDB];
     }
-    
     
     __weak typeof(JYDownloadManager*)weakSelf = self;
     aContent.downLoadState = EDownloadStateGoing;

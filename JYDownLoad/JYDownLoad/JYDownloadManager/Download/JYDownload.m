@@ -35,12 +35,7 @@ typedef NS_ENUM(NSUInteger, EDownloadFinishType) {
     __weak typeof(self)weakSelf = self;
     [self getFileHead:^(NSDictionary *headerFields) {
         
-        long long length = [headerFields[@"Content-Length"] longLongValue];
-        weakSelf.aContent.serverFileSize = length;
-        NSString *contentType = headerFields[@"Content-Type"];
-        weakSelf.fileType = [contentType deleteBeforeString:@"/"];
-        [weakSelf.aContent saveToDB];
-        NSInteger type = [weakSelf needDownload:length];
+        NSInteger type = [weakSelf needDownload:headerFields];
         switch (type) {
             case EDownloadNone:
                 [weakSelf downloadWithStart:-1];
@@ -94,7 +89,9 @@ typedef NS_ENUM(NSUInteger, EDownloadFinishType) {
         }
         
         if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
-            aBlock(((NSHTTPURLResponse*)response).allHeaderFields);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                aBlock(((NSHTTPURLResponse*)response).allHeaderFields);
+            });
         }
     }];
 
@@ -153,8 +150,21 @@ typedef NS_ENUM(NSUInteger, EDownloadFinishType) {
 }
 
 #pragma mark - 下载状态判断
-- (EDownloadFinishType)needDownload:(long long)length{
+- (EDownloadFinishType)needDownload:(NSDictionary *)headerFields{
     long long localLength = [self getLocalFileLength];
+    long long length = [headerFields[@"Content-Length"] longLongValue];
+    NSString *etag = headerFields[@"Etag"];
+    NSString *contentType = headerFields[@"Content-Type"];
+    JYDownloadInfo *aInfo = [self.aContent getDBInfo];
+    self.aContent.eTag = etag;
+    self.aContent.serverFileSize = length;
+    self.fileType = [contentType deleteBeforeString:@"/"];
+    [self.aContent saveToDB];
+    
+    if (![aInfo.eTag isEqualToString:etag]) {
+        [JYFileManager deleteLocalFilePath:aInfo.finishPath];
+        return EDownloadNone;
+    }
     
     if (localLength == 0) {
         return EDownloadNone;
@@ -205,7 +215,6 @@ typedef NS_ENUM(NSUInteger, EDownloadFinishType) {
         NSString *fileName = [self.aContent.urlString MD5String];
         _downloadFilePath = [JYFileManager getCachePathWith:[self.downloadPath stringByAppendingPathComponent:@"unfinished"] fileName:fileName];
         self.aContent.relativePath = [NSString stringWithFormat:@"%@/unfinished/%@",self.downloadPath,fileName];
-        [self.aContent saveToDB];
     }
     return _downloadFilePath;
 }

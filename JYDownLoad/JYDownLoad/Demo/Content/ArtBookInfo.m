@@ -15,4 +15,8 @@
     [[ArtNetWorkService shared] insertBook:self];
 }
 
+- (instancetype)getDBInfo{
+    return [[ArtNetWorkService shared] getBookByUrlString:self.urlString];
+}
+
 @end
