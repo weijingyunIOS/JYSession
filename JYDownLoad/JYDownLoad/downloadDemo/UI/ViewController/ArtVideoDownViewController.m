@@ -28,6 +28,11 @@
             [weakSelf reload];
             return;
         }
+        
+        if (aVideo.downLoadState == EDownloadStateDelete) {
+            return;
+        }
+        
         [weakSelf showText:[aError localizedDescription]];
     }];
 }
@@ -46,6 +51,11 @@
 }
 
 - (void)addDownLoadUrl:(NSString *)urlString{
+    if ([[ArtNetWorkService shared] getVideoByUrlString:urlString] != nil) {
+        [self showText:@"已下载"];
+        return;
+    }
+    
     ArtVideoInfo *aInfo = [[ArtVideoInfo alloc] init];
     aInfo.urlString = urlString;
     aInfo.downLoadState = EDownloadStateGoing;

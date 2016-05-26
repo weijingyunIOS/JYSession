@@ -27,8 +27,14 @@
         [aCell updateState:aInfo];
         if (aError == nil) {
             [weakSelf reload];
+            NSLog(@"%@",aBook.finishPath);
             return;
         }
+        
+        if (aBook.downLoadState == EDownloadStateDelete) {
+            return;
+        }
+        
         [weakSelf showText:[aError localizedDescription]];
     }];
 }
@@ -47,6 +53,11 @@
 }
 
 - (void)addDownLoadUrl:(NSString *)urlString{
+    
+    if ([[ArtNetWorkService shared] getBookByUrlString:urlString] != nil) {
+        [self showText:@"已下载"];
+        return;
+    }
     
     ArtBookInfo *aInfo = [[ArtBookInfo alloc] init];
     aInfo.urlString = urlString;
