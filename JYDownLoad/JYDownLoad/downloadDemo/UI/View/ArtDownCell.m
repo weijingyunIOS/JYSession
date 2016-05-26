@@ -47,8 +47,8 @@
     }];
     
     [self.progressView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.contentView).offset(8);
-        make.left.equalTo(self.contentView).offset(-8);
+        make.right.equalTo(self.contentView).offset(-20);
+        make.left.equalTo(self.contentView).offset(20);
         make.bottom.equalTo(self.contentView).offset(-8);
         make.height.mas_equalTo(5);
     }];
@@ -72,8 +72,9 @@
         self.nameLabel.text = info.videoDesc;
     }
     
-    [self updateProgress:aInfo];
     [self updateState:aInfo];
+    CGFloat progress = aInfo.currentFileSize / (CGFloat)aInfo.serverFileSize;
+    [self.progressView setProgress:progress];
 }
 
 - (void)updateProgress:(JYDownloadInfo*)aInfo{
@@ -109,6 +110,10 @@
             
         case EDownloadStateFaile:
             str = @"下载失败";
+            break;
+            
+        case EDownloadStateDelete:
+            str = @"已删除";
             break;
     }
     self.stateLabel.text = str;

@@ -29,7 +29,7 @@
             [weakSelf reload];
             return;
         }
-        [self showText:[aError localizedDescription]];
+        [weakSelf showText:[aError localizedDescription]];
     }];
 }
 
@@ -43,6 +43,21 @@
 
 - (void)deleteDownForInfo:(ArtBookInfo *)aInfo{
     [[ArtNetWorkService shared] deleteBookByUrlString:aInfo.urlString];
+    [self reload];
+}
+
+- (void)addDownLoadUrl:(NSString *)urlString{
+    
+    ArtBookInfo *aInfo = [[ArtBookInfo alloc] init];
+    aInfo.urlString = urlString;
+    aInfo.downLoadState = EDownloadStateGoing;
+    NSInteger count = random();
+    while ([[ArtNetWorkService shared] getBookByBookID:[NSString stringWithFormat:@"%tu",count]]) {
+        count = random();
+    }
+    aInfo.bookID = [NSString stringWithFormat:@"%tu",count + 1];
+    aInfo.bookName = [NSString stringWithFormat:@"第 %tu 视频",count + 1];
+    [aInfo saveToDB];
     [self reload];
 }
 

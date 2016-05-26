@@ -28,7 +28,7 @@
             [weakSelf reload];
             return;
         }
-        [self showText:[aError localizedDescription]];
+        [weakSelf showText:[aError localizedDescription]];
     }];
 }
 
@@ -42,6 +42,20 @@
 
 - (void)deleteDownForInfo:(ArtVideoInfo *)aInfo{
     [[ArtNetWorkService shared] deleteVideoByUrlString:aInfo.urlString];
+    [self reload];
+}
+
+- (void)addDownLoadUrl:(NSString *)urlString{
+    ArtVideoInfo *aInfo = [[ArtVideoInfo alloc] init];
+    aInfo.urlString = urlString;
+    aInfo.downLoadState = EDownloadStateGoing;
+    NSInteger count = random();
+    while ([[ArtNetWorkService shared] getVideoByVideoID:[NSString stringWithFormat:@"%tu",count]]) {
+        count = random();
+    }
+    aInfo.videoID = [NSString stringWithFormat:@"%tu",count + 1];
+    aInfo.videoDesc = [NSString stringWithFormat:@"第 %tu 视频",count + 1];
+    [aInfo saveToDB];
     [self reload];
 }
 

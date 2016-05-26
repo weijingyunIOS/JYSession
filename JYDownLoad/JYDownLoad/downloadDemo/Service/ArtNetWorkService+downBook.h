@@ -22,6 +22,7 @@
 - (NSInteger)getFinishBookCount;
 
 - (ArtBookInfo *)getBookByUrlString:(NSString *)urlString;
+- (ArtBookInfo *)getBookByBookID:(NSString *)bookID;
 - (void)deleteBookByUrlString:(NSString *)urlString;
 
 @end

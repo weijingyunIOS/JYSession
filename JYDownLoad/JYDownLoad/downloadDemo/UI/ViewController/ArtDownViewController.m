@@ -23,12 +23,37 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     [self configurationTableView];
+    [self configurationRightView];
     [self reload];
 }
 
 - (void)dealloc{
     NSLog(@"%s",__func__);
     [self cacleBlock];
+}
+
+- (void)configurationRightView{
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"新增下载" style:UIBarButtonItemStyleDone target:self action:@selector(rightClick)];
+}
+
+- (void)rightClick{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"新增下载" message:@"下载链接" delegate: self  cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    alert.tag = 1000;
+    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (alertView.tag != 1000) {
+        return;
+    }
+    
+    if (buttonIndex != 1) {
+        return;
+    }
+    NSString *urlString = [alertView textFieldAtIndex:0].text;
+    urlString = [urlString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    [self addDownLoadUrl:urlString];
 }
 
 - (void)configurationTableView{
@@ -54,6 +79,9 @@
 }
 
 - (void)deleteDownForInfo:(JYDownloadInfo *)aInfo{
+}
+
+- (void)addDownLoadUrl:(NSString *)urlString{
 }
 
 - (void)showText:(NSString *)str{
@@ -97,7 +125,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     ArtDownCell *aCell = [tableView dequeueReusableCellWithIdentifier:@"ArtDownCell" forIndexPath:indexPath];
     JYDownloadInfo *aInfo = [self getInfoFor:indexPath];
-    if (aInfo.downLoadState != EDownloadStateFinish) {
+    if (aInfo.downLoadState == EDownloadStateGoing) {
         [self downloadForCell:aCell info:aInfo];
     }
     [aCell updateInfo:aInfo];

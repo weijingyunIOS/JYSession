@@ -22,6 +22,7 @@
 - (NSInteger)getFinishVideoCount;
 
 - (ArtVideoInfo *)getVideoByUrlString:(NSString *)urlString;
+- (ArtVideoInfo *)getVideoByVideoID:(NSString *)videoID;
 - (void)deleteVideoByUrlString:(NSString *)urlString;
 
 @end

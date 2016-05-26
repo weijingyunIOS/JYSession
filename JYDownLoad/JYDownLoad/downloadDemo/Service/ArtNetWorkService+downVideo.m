@@ -50,4 +50,8 @@
     [self.netWorkDB.videoTable deleteDownloadByUrlString:urlString forType:EDownloadVideo];
 }
 
+- (ArtVideoInfo *)getVideoByVideoID:(NSString *)videoID{
+  return [self.netWorkDB.videoTable getContentByID:videoID];
+}
+
 @end

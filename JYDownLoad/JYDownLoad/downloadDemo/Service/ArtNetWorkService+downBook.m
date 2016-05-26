@@ -50,4 +50,8 @@
     [self.netWorkDB.bookTable deleteDownloadByUrlString:urlString forType:EDownloadBook];
 }
 
+- (ArtBookInfo *)getBookByBookID:(NSString *)bookID{
+    return [self.netWorkDB.bookTable getContentByID:bookID];
+}
+
 @end
