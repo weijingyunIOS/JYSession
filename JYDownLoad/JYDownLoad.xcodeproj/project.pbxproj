@@ -8,11 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2A1F64FC1D929115D1D62C43 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 33A0A230CA7E09176122CFA4 /* libPods.a */; };
-		5C14759C1CF2FF33007C8D8B /* ArtBookInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C14759B1CF2FF33007C8D8B /* ArtBookInfo.m */; };
-		5C14759F1CF3003F007C8D8B /* ArtNetWorkDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C14759E1CF3003F007C8D8B /* ArtNetWorkDB.m */; };
-		5C1475A21CF30057007C8D8B /* ArtBookTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1475A11CF30057007C8D8B /* ArtBookTable.m */; };
-		5C1475A81CF306BA007C8D8B /* ArtNetWorkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1475A71CF306BA007C8D8B /* ArtNetWorkService.m */; };
-		5C1475AB1CF30811007C8D8B /* ArtNetWorkService+downBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1475AA1CF30811007C8D8B /* ArtNetWorkService+downBook.m */; };
 		5C1475AE1CF3136A007C8D8B /* JYDownloadTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C1475AD1CF3136A007C8D8B /* JYDownloadTable.m */; };
 		5C7C5EDA1CF2A435007697F0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7C5ED91CF2A435007697F0 /* main.m */; };
 		5C7C5EDD1CF2A435007697F0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7C5EDC1CF2A435007697F0 /* AppDelegate.m */; };
@@ -22,15 +17,20 @@
 		5C7C5EE81CF2A435007697F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C7C5EE61CF2A435007697F0 /* LaunchScreen.storyboard */; };
 		5C7C5EF31CF2A435007697F0 /* JYDownLoadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7C5EF21CF2A435007697F0 /* JYDownLoadTests.m */; };
 		5C7C5EFE1CF2A435007697F0 /* JYDownLoadUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7C5EFD1CF2A435007697F0 /* JYDownLoadUITests.m */; };
+		5CA302EF1CF6DEF70060C067 /* ArtBookInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA302DE1CF6DEF70060C067 /* ArtBookInfo.m */; };
+		5CA302F01CF6DEF70060C067 /* ArtVideoInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA302E01CF6DEF70060C067 /* ArtVideoInfo.m */; };
+		5CA302F11CF6DEF70060C067 /* ArtNetWorkService+downBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA302E31CF6DEF70060C067 /* ArtNetWorkService+downBook.m */; };
+		5CA302F21CF6DEF70060C067 /* ArtNetWorkService+downVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA302E51CF6DEF70060C067 /* ArtNetWorkService+downVideo.m */; };
+		5CA302F31CF6DEF70060C067 /* ArtNetWorkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA302E71CF6DEF70060C067 /* ArtNetWorkService.m */; };
+		5CA302F41CF6DEF70060C067 /* ArtBookTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA302EA1CF6DEF70060C067 /* ArtBookTable.m */; };
+		5CA302F51CF6DEF70060C067 /* ArtNetWorkDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA302EC1CF6DEF70060C067 /* ArtNetWorkDB.m */; };
+		5CA302F61CF6DEF70060C067 /* ArtVideoTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA302EE1CF6DEF70060C067 /* ArtVideoTable.m */; };
 		5CA6426A1CF2DA51000969B3 /* NSString+JYCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA642551CF2DA51000969B3 /* NSString+JYCategory.m */; };
 		5CA6426B1CF2DA51000969B3 /* JYDownloadInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA642581CF2DA51000969B3 /* JYDownloadInfo.m */; };
 		5CA6426C1CF2DA51000969B3 /* JYDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA6425B1CF2DA51000969B3 /* JYDownload.m */; };
 		5CA6426D1CF2DA51000969B3 /* JYDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA6425E1CF2DA51000969B3 /* JYDownloadManager.m */; };
 		5CA6426E1CF2DA51000969B3 /* JYFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA642601CF2DA51000969B3 /* JYFileManager.m */; };
 		5CA6426F1CF2DA51000969B3 /* JYNetWorkConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA642621CF2DA51000969B3 /* JYNetWorkConfig.m */; };
-		5CF067F91CF6D77E000095FA /* ArtVideoInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF067F81CF6D77E000095FA /* ArtVideoInfo.m */; };
-		5CF067FC1CF6D7FF000095FA /* ArtVideoTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF067FB1CF6D7FF000095FA /* ArtVideoTable.m */; };
-		5CF067FF1CF6D86C000095FA /* ArtNetWorkService+downVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF067FE1CF6D86C000095FA /* ArtNetWorkService+downVideo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,16 +52,6 @@
 
 /* Begin PBXFileReference section */
 		33A0A230CA7E09176122CFA4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		5C14759A1CF2FF33007C8D8B /* ArtBookInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtBookInfo.h; sourceTree = "<group>"; };
-		5C14759B1CF2FF33007C8D8B /* ArtBookInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtBookInfo.m; sourceTree = "<group>"; };
-		5C14759D1CF3003F007C8D8B /* ArtNetWorkDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtNetWorkDB.h; sourceTree = "<group>"; };
-		5C14759E1CF3003F007C8D8B /* ArtNetWorkDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtNetWorkDB.m; sourceTree = "<group>"; };
-		5C1475A01CF30057007C8D8B /* ArtBookTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtBookTable.h; sourceTree = "<group>"; };
-		5C1475A11CF30057007C8D8B /* ArtBookTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtBookTable.m; sourceTree = "<group>"; };
-		5C1475A61CF306BA007C8D8B /* ArtNetWorkService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtNetWorkService.h; sourceTree = "<group>"; };
-		5C1475A71CF306BA007C8D8B /* ArtNetWorkService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtNetWorkService.m; sourceTree = "<group>"; };
-		5C1475A91CF30811007C8D8B /* ArtNetWorkService+downBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ArtNetWorkService+downBook.h"; sourceTree = "<group>"; };
-		5C1475AA1CF30811007C8D8B /* ArtNetWorkService+downBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ArtNetWorkService+downBook.m"; sourceTree = "<group>"; };
 		5C1475AC1CF3136A007C8D8B /* JYDownloadTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYDownloadTable.h; sourceTree = "<group>"; };
 		5C1475AD1CF3136A007C8D8B /* JYDownloadTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYDownloadTable.m; sourceTree = "<group>"; };
 		5C7C5ED51CF2A435007697F0 /* JYDownLoad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JYDownLoad.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,6 +70,22 @@
 		5C7C5EF91CF2A435007697F0 /* JYDownLoadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JYDownLoadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C7C5EFD1CF2A435007697F0 /* JYDownLoadUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JYDownLoadUITests.m; sourceTree = "<group>"; };
 		5C7C5EFF1CF2A435007697F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5CA302DD1CF6DEF70060C067 /* ArtBookInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtBookInfo.h; sourceTree = "<group>"; };
+		5CA302DE1CF6DEF70060C067 /* ArtBookInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtBookInfo.m; sourceTree = "<group>"; };
+		5CA302DF1CF6DEF70060C067 /* ArtVideoInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtVideoInfo.h; sourceTree = "<group>"; };
+		5CA302E01CF6DEF70060C067 /* ArtVideoInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtVideoInfo.m; sourceTree = "<group>"; };
+		5CA302E21CF6DEF70060C067 /* ArtNetWorkService+downBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ArtNetWorkService+downBook.h"; sourceTree = "<group>"; };
+		5CA302E31CF6DEF70060C067 /* ArtNetWorkService+downBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ArtNetWorkService+downBook.m"; sourceTree = "<group>"; };
+		5CA302E41CF6DEF70060C067 /* ArtNetWorkService+downVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ArtNetWorkService+downVideo.h"; sourceTree = "<group>"; };
+		5CA302E51CF6DEF70060C067 /* ArtNetWorkService+downVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ArtNetWorkService+downVideo.m"; sourceTree = "<group>"; };
+		5CA302E61CF6DEF70060C067 /* ArtNetWorkService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtNetWorkService.h; sourceTree = "<group>"; };
+		5CA302E71CF6DEF70060C067 /* ArtNetWorkService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtNetWorkService.m; sourceTree = "<group>"; };
+		5CA302E91CF6DEF70060C067 /* ArtBookTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtBookTable.h; sourceTree = "<group>"; };
+		5CA302EA1CF6DEF70060C067 /* ArtBookTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtBookTable.m; sourceTree = "<group>"; };
+		5CA302EB1CF6DEF70060C067 /* ArtNetWorkDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtNetWorkDB.h; sourceTree = "<group>"; };
+		5CA302EC1CF6DEF70060C067 /* ArtNetWorkDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtNetWorkDB.m; sourceTree = "<group>"; };
+		5CA302ED1CF6DEF70060C067 /* ArtVideoTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtVideoTable.h; sourceTree = "<group>"; };
+		5CA302EE1CF6DEF70060C067 /* ArtVideoTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtVideoTable.m; sourceTree = "<group>"; };
 		5CA642541CF2DA51000969B3 /* NSString+JYCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+JYCategory.h"; sourceTree = "<group>"; };
 		5CA642551CF2DA51000969B3 /* NSString+JYCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+JYCategory.m"; sourceTree = "<group>"; };
 		5CA642571CF2DA51000969B3 /* JYDownloadInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYDownloadInfo.h; sourceTree = "<group>"; };
@@ -92,12 +98,6 @@
 		5CA642601CF2DA51000969B3 /* JYFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYFileManager.m; sourceTree = "<group>"; };
 		5CA642611CF2DA51000969B3 /* JYNetWorkConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYNetWorkConfig.h; sourceTree = "<group>"; };
 		5CA642621CF2DA51000969B3 /* JYNetWorkConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYNetWorkConfig.m; sourceTree = "<group>"; };
-		5CF067F71CF6D77E000095FA /* ArtVideoInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtVideoInfo.h; sourceTree = "<group>"; };
-		5CF067F81CF6D77E000095FA /* ArtVideoInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtVideoInfo.m; sourceTree = "<group>"; };
-		5CF067FA1CF6D7FF000095FA /* ArtVideoTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtVideoTable.h; sourceTree = "<group>"; };
-		5CF067FB1CF6D7FF000095FA /* ArtVideoTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtVideoTable.m; sourceTree = "<group>"; };
-		5CF067FD1CF6D86C000095FA /* ArtNetWorkService+downVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ArtNetWorkService+downVideo.h"; sourceTree = "<group>"; };
-		5CF067FE1CF6D86C000095FA /* ArtNetWorkService+downVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ArtNetWorkService+downVideo.m"; sourceTree = "<group>"; };
 		A40FD79B9F0A678F39365E3F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		A6E9EF1F5B5FB143B6D0D3D2 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -128,17 +128,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5C1475991CF2FF15007C8D8B /* Content */ = {
-			isa = PBXGroup;
-			children = (
-				5C14759A1CF2FF33007C8D8B /* ArtBookInfo.h */,
-				5C14759B1CF2FF33007C8D8B /* ArtBookInfo.m */,
-				5CF067F71CF6D77E000095FA /* ArtVideoInfo.h */,
-				5CF067F81CF6D77E000095FA /* ArtVideoInfo.m */,
-			);
-			path = Content;
-			sourceTree = "<group>";
-		};
 		5C7C5ECC1CF2A435007697F0 = {
 			isa = PBXGroup;
 			children = (
@@ -165,7 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				5CA642521CF2DA51000969B3 /* JYDownloadManager */,
-				5CA642731CF2DA73000969B3 /* Demo */,
+				5CA302DB1CF6DEF70060C067 /* downloadDemo */,
 				5C7C5EDB1CF2A435007697F0 /* AppDelegate.h */,
 				5C7C5EDC1CF2A435007697F0 /* AppDelegate.m */,
 				5C7C5EDE1CF2A435007697F0 /* ViewController.h */,
@@ -203,6 +192,53 @@
 				5C7C5EFF1CF2A435007697F0 /* Info.plist */,
 			);
 			path = JYDownLoadUITests;
+			sourceTree = "<group>";
+		};
+		5CA302DB1CF6DEF70060C067 /* downloadDemo */ = {
+			isa = PBXGroup;
+			children = (
+				5CA302DC1CF6DEF70060C067 /* Content */,
+				5CA302E11CF6DEF70060C067 /* Service */,
+				5CA302E81CF6DEF70060C067 /* Store */,
+			);
+			path = downloadDemo;
+			sourceTree = "<group>";
+		};
+		5CA302DC1CF6DEF70060C067 /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				5CA302DD1CF6DEF70060C067 /* ArtBookInfo.h */,
+				5CA302DE1CF6DEF70060C067 /* ArtBookInfo.m */,
+				5CA302DF1CF6DEF70060C067 /* ArtVideoInfo.h */,
+				5CA302E01CF6DEF70060C067 /* ArtVideoInfo.m */,
+			);
+			path = Content;
+			sourceTree = "<group>";
+		};
+		5CA302E11CF6DEF70060C067 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				5CA302E21CF6DEF70060C067 /* ArtNetWorkService+downBook.h */,
+				5CA302E31CF6DEF70060C067 /* ArtNetWorkService+downBook.m */,
+				5CA302E41CF6DEF70060C067 /* ArtNetWorkService+downVideo.h */,
+				5CA302E51CF6DEF70060C067 /* ArtNetWorkService+downVideo.m */,
+				5CA302E61CF6DEF70060C067 /* ArtNetWorkService.h */,
+				5CA302E71CF6DEF70060C067 /* ArtNetWorkService.m */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		5CA302E81CF6DEF70060C067 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				5CA302E91CF6DEF70060C067 /* ArtBookTable.h */,
+				5CA302EA1CF6DEF70060C067 /* ArtBookTable.m */,
+				5CA302EB1CF6DEF70060C067 /* ArtNetWorkDB.h */,
+				5CA302EC1CF6DEF70060C067 /* ArtNetWorkDB.m */,
+				5CA302ED1CF6DEF70060C067 /* ArtVideoTable.h */,
+				5CA302EE1CF6DEF70060C067 /* ArtVideoTable.m */,
+			);
+			path = Store;
 			sourceTree = "<group>";
 		};
 		5CA642521CF2DA51000969B3 /* JYDownloadManager */ = {
@@ -256,42 +292,6 @@
 				5CA642621CF2DA51000969B3 /* JYNetWorkConfig.m */,
 			);
 			path = Manager;
-			sourceTree = "<group>";
-		};
-		5CA642731CF2DA73000969B3 /* Demo */ = {
-			isa = PBXGroup;
-			children = (
-				5C1475991CF2FF15007C8D8B /* Content */,
-				5CA642751CF2F2F2000969B3 /* Store */,
-				5CA642741CF2F2F2000969B3 /* Service */,
-			);
-			path = Demo;
-			sourceTree = "<group>";
-		};
-		5CA642741CF2F2F2000969B3 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				5C1475A61CF306BA007C8D8B /* ArtNetWorkService.h */,
-				5C1475A71CF306BA007C8D8B /* ArtNetWorkService.m */,
-				5C1475A91CF30811007C8D8B /* ArtNetWorkService+downBook.h */,
-				5C1475AA1CF30811007C8D8B /* ArtNetWorkService+downBook.m */,
-				5CF067FD1CF6D86C000095FA /* ArtNetWorkService+downVideo.h */,
-				5CF067FE1CF6D86C000095FA /* ArtNetWorkService+downVideo.m */,
-			);
-			path = Service;
-			sourceTree = "<group>";
-		};
-		5CA642751CF2F2F2000969B3 /* Store */ = {
-			isa = PBXGroup;
-			children = (
-				5C14759D1CF3003F007C8D8B /* ArtNetWorkDB.h */,
-				5C14759E1CF3003F007C8D8B /* ArtNetWorkDB.m */,
-				5C1475A01CF30057007C8D8B /* ArtBookTable.h */,
-				5C1475A11CF30057007C8D8B /* ArtBookTable.m */,
-				5CF067FA1CF6D7FF000095FA /* ArtVideoTable.h */,
-				5CF067FB1CF6D7FF000095FA /* ArtVideoTable.m */,
-			);
-			path = Store;
 			sourceTree = "<group>";
 		};
 		5E26751C19F5AD2BB0E92494 /* Frameworks */ = {
@@ -492,24 +492,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C14759C1CF2FF33007C8D8B /* ArtBookInfo.m in Sources */,
+				5CA302F21CF6DEF70060C067 /* ArtNetWorkService+downVideo.m in Sources */,
 				5CA6426E1CF2DA51000969B3 /* JYFileManager.m in Sources */,
-				5C14759F1CF3003F007C8D8B /* ArtNetWorkDB.m in Sources */,
-				5CF067F91CF6D77E000095FA /* ArtVideoInfo.m in Sources */,
-				5CF067FC1CF6D7FF000095FA /* ArtVideoTable.m in Sources */,
-				5C1475A21CF30057007C8D8B /* ArtBookTable.m in Sources */,
 				5CA6426C1CF2DA51000969B3 /* JYDownload.m in Sources */,
+				5CA302F41CF6DEF70060C067 /* ArtBookTable.m in Sources */,
 				5CA6426B1CF2DA51000969B3 /* JYDownloadInfo.m in Sources */,
+				5CA302F01CF6DEF70060C067 /* ArtVideoInfo.m in Sources */,
 				5CA6426A1CF2DA51000969B3 /* NSString+JYCategory.m in Sources */,
+				5CA302EF1CF6DEF70060C067 /* ArtBookInfo.m in Sources */,
 				5C7C5EE01CF2A435007697F0 /* ViewController.m in Sources */,
-				5CF067FF1CF6D86C000095FA /* ArtNetWorkService+downVideo.m in Sources */,
-				5C1475A81CF306BA007C8D8B /* ArtNetWorkService.m in Sources */,
+				5CA302F11CF6DEF70060C067 /* ArtNetWorkService+downBook.m in Sources */,
 				5CA6426F1CF2DA51000969B3 /* JYNetWorkConfig.m in Sources */,
 				5CA6426D1CF2DA51000969B3 /* JYDownloadManager.m in Sources */,
 				5C1475AE1CF3136A007C8D8B /* JYDownloadTable.m in Sources */,
 				5C7C5EDD1CF2A435007697F0 /* AppDelegate.m in Sources */,
+				5CA302F51CF6DEF70060C067 /* ArtNetWorkDB.m in Sources */,
 				5C7C5EDA1CF2A435007697F0 /* main.m in Sources */,
-				5C1475AB1CF30811007C8D8B /* ArtNetWorkService+downBook.m in Sources */,
+				5CA302F61CF6DEF70060C067 /* ArtVideoTable.m in Sources */,
+				5CA302F31CF6DEF70060C067 /* ArtNetWorkService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
