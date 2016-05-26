@@ -20,5 +20,6 @@
 - (void)cacleForInfo:(JYDownloadInfo *)aInfo;
 - (void)deleteDownForInfo:(JYDownloadInfo *)aInfo;
 - (void)cacleBlock;
+- (void)showText:(NSString *)str;
 
 @end

@@ -26,7 +26,9 @@
         [aCell updateState:aInfo];
         if (aError == nil) {
             [weakSelf reload];
+            return;
         }
+        [self showText:[aError localizedDescription]];
     }];
 }
 

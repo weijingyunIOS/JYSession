@@ -56,6 +56,14 @@
 - (void)deleteDownForInfo:(JYDownloadInfo *)aInfo{
 }
 
+- (void)showText:(NSString *)str{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:str delegate: self  cancelButtonTitle:nil otherButtonTitles:nil];
+    [alert show];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [alert dismissWithClickedButtonIndex:0 animated:YES];
+    });
+}
+
 #pragma mark - UITableViewDelegate, UITableViewDataSource
 - (JYDownloadInfo *)getInfoFor:(NSIndexPath *)indexPath{
     NSArray *array;
