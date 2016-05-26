@@ -43,6 +43,10 @@
             typeName = @"EDownloadBook";
             break;
             
+        case EDownloadVideo:
+            typeName = @"EDownloadVideo";
+            break;
+            
         default:
             break;
     }

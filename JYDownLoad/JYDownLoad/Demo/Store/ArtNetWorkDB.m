@@ -13,6 +13,7 @@
 @interface ArtNetWorkDB ()
 
 @property (nonatomic, strong) ArtBookTable * bookTable;
+@property (nonatomic, strong) ArtVideoTable * videoTable;
 
 @end
 
@@ -39,15 +40,17 @@
 #pragma mark - 创建更新表
 - (NSInteger)getCurrentDBVersion
 {
-    return 2;
+    return 3;
 }
 
 - (void)createAllTable:(FMDatabase *)aDB{
     [self.bookTable createTable:aDB];
+    [self.videoTable createTable:aDB];
 }
 
 - (void)updateDB:(FMDatabase *)aDB{
     [self.bookTable updateDB:aDB];
+    [self.videoTable updateDB:aDB];
 }
 
 #pragma make - 懒加载
@@ -59,5 +62,12 @@
     return _bookTable;
 }
 
+- (ArtVideoTable *)videoTable{
+    if (!_videoTable) {
+        _videoTable = [[ArtVideoTable alloc] init];
+        _videoTable.dbQueue = self.dbQueue;
+    }
+    return _videoTable;
+}
 
 @end

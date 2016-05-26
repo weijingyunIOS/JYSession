@@ -8,10 +8,12 @@
 
 #import <JYDataBase/JYDataBase.h>
 #import "ArtBookTable.h"
+#import "ArtVideoTable.h"
 
 @interface ArtNetWorkDB : JYDataBase
 
 @property (nonatomic, strong, readonly) ArtBookTable * bookTable;
+@property (nonatomic, strong, readonly) ArtVideoTable * videoTable;
 
 + (instancetype)storage;
 
