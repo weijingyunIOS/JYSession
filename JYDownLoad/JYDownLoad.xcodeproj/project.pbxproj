@@ -244,10 +244,10 @@
 		5CA302E81CF6DEF70060C067 /* Store */ = {
 			isa = PBXGroup;
 			children = (
-				5CA302E91CF6DEF70060C067 /* ArtBookTable.h */,
-				5CA302EA1CF6DEF70060C067 /* ArtBookTable.m */,
 				5CA302EB1CF6DEF70060C067 /* ArtNetWorkDB.h */,
 				5CA302EC1CF6DEF70060C067 /* ArtNetWorkDB.m */,
+				5CA302E91CF6DEF70060C067 /* ArtBookTable.h */,
+				5CA302EA1CF6DEF70060C067 /* ArtBookTable.m */,
 				5CA302ED1CF6DEF70060C067 /* ArtVideoTable.h */,
 				5CA302EE1CF6DEF70060C067 /* ArtVideoTable.m */,
 			);
