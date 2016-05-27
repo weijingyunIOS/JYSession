@@ -32,16 +32,15 @@ typedef NS_ENUM(NSUInteger, EDownloadState) {
 @property (nonatomic, assign) long long downLoadSize; // 记录大小只有下载才有
 
 
-// 必须重写该方法 用于保存信息
-- (void)saveToDB;
-
 // 根据 aInfo 更新 self 基本数据为 0 也不更新 最好用NSNumber
 - (void)updateInfo:(JYDownloadInfo *)aInfo;
 
+// 必须重写该方法 用于保存信息
+- (void)saveToDB;
 // 会将 self 与数据库 对比 将 self 的非空字段更新到数据库
 - (instancetype)updeToDB;
-
 - (instancetype)getDBInfo;
+
 + (NSArray<NSString *> *)appedExtenArray:(NSArray <NSString*>*)aExtens;
 
 

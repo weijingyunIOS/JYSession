@@ -40,6 +40,23 @@
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"新增下载" message:@"下载链接" delegate: self  cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
     alert.tag = 1000;
     alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    NSArray *array =
+  @[@"http://meishubao-static.oss.aliyuncs.com/ebook/zip/5e8a2354-7a41-4d75-a7cc-1cb337a4a5bd-d59afbae-3c63-49eb-8c61-bd10f4def5db.zip",
+    @"http://meishubao-static.oss.aliyuncs.com/ebook/zip/bf8d3aa0-3956-412e-927b-10e92528842b-2833e47b-5a43-4227-a311-bf8956b6f2d6.zip",
+    @"http://meishubao-static.oss.aliyuncs.com/ebook/zip/fe898b34-b3a2-4fcc-8e67-e68003f5d612-d725513b-8087-4687-a64d-f2af0ef10679.zip",
+    @"http://meishubao-static.oss-cn-hangzhou.aliyuncs.com/video/2016-04-20/bfeac18e955d4b85b30b8856587af00f.mp4",
+    @"http://meishubao-static.oss-cn-hangzhou.aliyuncs.com/video/2016-04-19/6a9cb19fd1954b7c85735c7ae62888dd.mp4",
+    @"http://meishubao-static.oss-cn-hangzhou.aliyuncs.com/video/2016-04-15/2e8ffbbfcb8b48ff85bdcf8d1b8a576c.mp4",
+    @"http://static.meishubao.com/video/2016-05-26/wfA3RrEMTH.mp4",
+    @"http://meishubao-static.oss-cn-hangzhou.aliyuncs.com/video/2016-05-26/93515729705d631540b71463f65b9772.mp4",
+    @"http://meishubao-static.oss-cn-hangzhou.aliyuncs.com/video/2016-05-26/fb6d9703a3c1f3974a487344f847e72f.mp4"
+    ];
+    static NSInteger count = 0;
+    if (array.count > count) {
+        [alert textFieldAtIndex:0].text = array[count];
+//        [alert textFieldAtIndex:0].text = @"http://meishubao-static.oss.aliyuncs.com/ebook/zip/5e8a2354-7a41-4d75-a7cc-1cb337a4a5bd-d59afbae-3c63-49eb-8c61-bd10f4def5db.zip";
+    }
+    count ++;
     [alert show];
 }
 

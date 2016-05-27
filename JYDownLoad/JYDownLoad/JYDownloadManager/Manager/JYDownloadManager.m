@@ -36,27 +36,26 @@
     aContent = [aContent updeToDB];
     NSString *key = [aContent.urlString MD5String];
     JYDownload *download = self.downloadDicM[key];
-    if (download == nil) {
+     aContent.downLoadState = EDownloadStateGoing;
+    BOOL newDownload = download == nil;
+    if (newDownload) {
         
         if (self.downloadDicM.count >= self.maxDownLoad) {
             if (aComplete) {
+                aContent.downLoadState = EDownloadStateWaiting;
                 NSString *errorString = [NSString stringWithFormat:@"已达最大下载数%tu",self.maxDownLoad];
                 NSError *aError = [NSError errorWithDomain:@"超过最大下载数" code:1 userInfo:@{@"NSLocalizedDescription" : errorString}];
+                [aContent saveToDB];
                 aComplete(aContent,aError);
             }
             return;
         }
         
         download = [[JYDownload alloc] init];
-        download.aContent = aContent;
-        download.session = self.session;
-        download.downloadPath = self.downloadPath;
-        [self setDownload:download forUrlString:aContent.urlString];
-        [download startDownload];
+        aContent.downLoadState = EDownloadStateGoing;
     }
-    
+   
     __weak typeof(JYDownloadManager*)weakSelf = self;
-    aContent.downLoadState = EDownloadStateGoing;
     download.successBlock = ^(JYDownload *aCmd){
         aContent.downLoadState = EDownloadStateFinish;
         [aContent saveToDB];
@@ -74,10 +73,12 @@
         }else if (aContent.downLoadState == EDownloadStatePause){
             aError = [NSError errorWithDomain:@"暂停下载" code:0 userInfo:@{@"NSLocalizedDescription" : @"暂停下载"}];
             [aContent saveToDB];
+        }else if (aContent.downLoadState == EDownloadStateDelete){
+            aError = [NSError errorWithDomain:@"删除下载" code:1 userInfo:@{@"NSLocalizedDescription" : @"已删除"}];
         }
         
         if (aComplete) {
-            aComplete(nil,aError);
+            aComplete(aContent,aError);
         }
         [weakSelf.downloadDicM removeObjectForKey:key];
         [weakSelf finish];
@@ -91,6 +92,14 @@
             });
         }
     };
+    
+    download.aContent = aContent;
+    if (newDownload) {
+        download.session = self.session;
+        download.downloadPath = self.downloadPath;
+        [self setDownload:download forUrlString:aContent.urlString];
+        [download startDownload];
+    }
 }
 
 - (void)deleteUrlString:(NSString *)urlString{

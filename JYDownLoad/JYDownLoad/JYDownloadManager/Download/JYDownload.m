@@ -204,7 +204,7 @@ typedef NS_ENUM(NSUInteger, EDownloadFinishType) {
 }
 
 // 删除文件
-- (void)deleteLocalFile{
+- (BOOL)deleteLocalFile{
     return [JYFileManager deleteLocalFilePath:self.downloadFilePath];
 }
 

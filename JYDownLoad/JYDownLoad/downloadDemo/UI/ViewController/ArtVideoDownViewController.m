@@ -25,11 +25,12 @@
     } Complete:^(ArtVideoInfo *aVideo, NSError *aError) {
         [aCell updateState:aInfo];
         if (aError == nil) {
+            NSLog(@"%@",aVideo.finishPath);
             [weakSelf reload];
             return;
         }
         
-        if (aVideo.downLoadState == EDownloadStateDelete) {
+        if (aVideo.downLoadState == EDownloadStateDelete || aVideo == nil) {
             return;
         }
         

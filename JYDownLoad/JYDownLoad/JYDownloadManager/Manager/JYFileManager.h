@@ -23,7 +23,7 @@
 + (long long)getLengthForFilePath:(NSString*)filePath;
 
 // 删除文件
-+ (void)deleteLocalFilePath:(NSString*)filePath;
++ (BOOL)deleteLocalFilePath:(NSString*)filePath;
 
 // 写入文件
 + (void)saveData:(NSData*)aData toFilePath:(NSString *)filePath;

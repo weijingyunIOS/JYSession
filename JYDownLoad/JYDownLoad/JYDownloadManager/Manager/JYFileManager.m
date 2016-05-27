@@ -56,8 +56,10 @@
     return 0;
 }
 
-+ (void)deleteLocalFilePath:(NSString*)filePath{
-    [[NSFileManager defaultManager] removeItemAtPath:filePath error:nil];
++ (BOOL)deleteLocalFilePath:(NSString*)filePath{
+    NSError *error = nil;
+    [[NSFileManager defaultManager] removeItemAtPath:filePath error:&error];
+    return error == nil;
 }
 
 // 写入文件

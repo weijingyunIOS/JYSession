@@ -73,7 +73,7 @@
     }
     
     [self updateState:aInfo];
-    CGFloat progress = aInfo.currentFileSize / (CGFloat)aInfo.serverFileSize;
+    CGFloat progress = aInfo.serverFileSize <= 0 ? 0.0 : aInfo.currentFileSize / (CGFloat)aInfo.serverFileSize;
     [self.progressView setProgress:progress];
 }
 
@@ -81,7 +81,7 @@
     if (self.downInfo != aInfo) {
         return;
     }
-    CGFloat progress = aInfo.downLoadSize / (CGFloat)aInfo.serverFileSize;
+    CGFloat progress = aInfo.serverFileSize <= 0 ? 0.0 : aInfo.downLoadSize / (CGFloat)aInfo.serverFileSize;
     NSLog(@"%f",progress);
     [self.progressView setProgress:progress];
 }
