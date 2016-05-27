@@ -9,11 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "JYNetWorkConfig.h"
 
+// EDownloadStateGoing 放在最前面，方便数据库查询时 下载中的在最上面 不要改动位置
 typedef NS_ENUM(NSUInteger, EDownloadState) {
-    EDownloadStateWaiting, // 等待下载
     EDownloadStateGoing,   // 下载中
+    EDownloadStateWaiting, // 等待下载
     EDownloadStatePause,   // 暂停
     EDownloadStateFaile,   // 失败
+    EDownloadStatePretreatment, // 下载完成 等待预处理
     EDownloadStateFinish,  // 完成
     EDownloadStateDelete   // 删除 删除不要保存
 };

@@ -11,7 +11,14 @@
 @implementation ArtNetWorkService (downBook)
 
 - (void)downloadBookInfo:(ArtBookInfo *)aBook onProgress:(void(^)(int64_t completeBytes, int64_t totalBytes))aProgress Complete:(void(^)(ArtBookInfo* aBook, NSError* aError))aComplete{
-    [self downloadType:EDownloadBook content:aBook onProgress:aProgress Complete:aComplete];
+    [self downloadType:EDownloadBook content:aBook onProgress:aProgress pretreatment:^(ArtBookInfo *aBook) {
+        NSLog(@"预先处理---比如解压");
+        aBook.downLoadState = EDownloadStateFinish;
+        [aBook saveToDB];
+        if (aComplete) {
+            aComplete(aBook,nil);
+        }
+    } Complete:aComplete];
 }
 
 - (void)cancelBookUrlString:(NSString *)urlString{

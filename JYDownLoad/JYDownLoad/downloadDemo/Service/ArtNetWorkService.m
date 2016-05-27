@@ -34,8 +34,32 @@
 }
 
 - (void)downloadType:(EDownloadType)type content:(JYDownloadInfo *)aContent onProgress:(void(^)(int64_t completeBytes, int64_t totalBytes))aProgress Complete:(void(^)(id aContent, NSError* aError))aComplete{
+    [self downloadType:type content:aContent onProgress:aProgress pretreatment:^(JYDownloadInfo *aContent) {
+        aContent.downLoadState = EDownloadStateFinish;
+        [aContent saveToDB];
+        if (aComplete) {
+            aComplete(aContent,nil);
+        }
+    } Complete:aComplete];
+}
+
+- (void)downloadType:(EDownloadType)type content:(JYDownloadInfo *)aContent onProgress:(void(^)(int64_t completeBytes, int64_t totalBytes))aProgress pretreatment:(void(^)(id aContent))aPretreatment Complete:(void(^)(id aContent, NSError* aError))aComplete{
     JYDownloadManager *downloadManager = [self getDownloadManagerForType:type];
-    [downloadManager downloadContent:aContent onProgress:aProgress Complete:aComplete];
+    [downloadManager downloadContent:aContent onProgress:aProgress Complete:^(JYDownloadInfo *aContent, NSError *aError) {
+        if (aError != nil) {
+            if (aContent.downLoadState == EDownloadStateDelete) {
+                return;
+            }
+            aComplete(aContent,aError);
+            return;
+        }
+        
+        if (aPretreatment) {
+            aPretreatment(aContent);
+            return;
+        }
+        aComplete(aContent,aError);
+    }];
 }
 
 - (void)deletetype:(EDownloadType)type urlString:(NSString *)urlString{

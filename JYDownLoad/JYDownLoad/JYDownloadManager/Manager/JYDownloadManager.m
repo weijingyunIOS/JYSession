@@ -34,6 +34,12 @@
     }
     
     aContent = [aContent updeToDB];
+    if (aContent.downLoadState == EDownloadStatePretreatment) {
+        if (aComplete) {
+            aComplete(aContent,nil);
+        }
+        return;
+    }
     NSString *key = [aContent.urlString MD5String];
     JYDownload *download = self.downloadDicM[key];
      aContent.downLoadState = EDownloadStateGoing;
@@ -57,7 +63,7 @@
    
     __weak typeof(JYDownloadManager*)weakSelf = self;
     download.successBlock = ^(JYDownload *aCmd){
-        aContent.downLoadState = EDownloadStateFinish;
+        aContent.downLoadState = EDownloadStatePretreatment;
         [aContent saveToDB];
         if (aComplete) {
             aComplete(aCmd.aContent,nil);

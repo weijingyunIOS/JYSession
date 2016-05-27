@@ -17,6 +17,9 @@
 
 + (instancetype)shared;
 - (void)removeDownloadManagerForType:(EDownloadType)aType;
+
+- (void)downloadType:(EDownloadType)type content:(JYDownloadInfo *)aContent onProgress:(void(^)(int64_t completeBytes, int64_t totalBytes))aProgress pretreatment:(void(^)(id aContent))aPretreatment Complete:(void(^)(id aContent, NSError* aError))aComplete;
+
 - (void)downloadType:(EDownloadType)type content:(JYDownloadInfo *)aContent onProgress:(void(^)(int64_t completeBytes, int64_t totalBytes))aProgress Complete:(void(^)(id aContent, NSError* aError))aComplete;
 
 - (void)deletetype:(EDownloadType)type urlString:(NSString *)urlString;

@@ -31,9 +31,6 @@
             return;
         }
         
-        if (aBook.downLoadState == EDownloadStateDelete) {
-            return;
-        }
         [weakSelf showText:[aError localizedDescription]];
     }];
 }

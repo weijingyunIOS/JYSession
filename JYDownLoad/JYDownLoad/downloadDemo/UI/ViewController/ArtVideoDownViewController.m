@@ -29,11 +29,6 @@
             [weakSelf reload];
             return;
         }
-        
-        if (aVideo.downLoadState == EDownloadStateDelete || aVideo == nil) {
-            return;
-        }
-        
         [weakSelf showText:[aError localizedDescription]];
     }];
 }
