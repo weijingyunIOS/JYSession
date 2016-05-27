@@ -21,6 +21,7 @@
 - (NSArray<JYDownloadInfo *> *)getUnFinishDownload{
     return [self getContentByConditions:^(JYQueryConditions *make) {
         make.field(@"downLoadState").notEqualTo([NSString stringWithFormat:@"%tu",EDownloadStateFinish]);
+        make.asc(@"downLoadState");
     }];
 }
 
