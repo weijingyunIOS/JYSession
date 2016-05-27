@@ -65,8 +65,8 @@
     while ([[ArtNetWorkService shared] getBookByBookID:[NSString stringWithFormat:@"%tu",count]]) {
         count = random();
     }
-    aInfo.bookID = [NSString stringWithFormat:@"%tu",count + 1];
-    aInfo.bookName = [NSString stringWithFormat:@"第 %tu 视频",count + 1];
+    aInfo.bookID = [NSString stringWithFormat:@"%tu",count];
+    aInfo.bookName = [NSString stringWithFormat:@"第 %tu 视频",count];
     [aInfo saveToDB];
     [self reload];
 }

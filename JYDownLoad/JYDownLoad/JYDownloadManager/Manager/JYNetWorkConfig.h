@@ -21,5 +21,6 @@ typedef NS_ENUM(NSUInteger, EDownloadType) {
 - (NSString *)getDownloadType:(EDownloadType)aType;
 - (NSInteger)getMaxDownloadForType:(EDownloadType)aType;
 - (void)removeDownloadManagerForType:(EDownloadType)aType;
+- (NSString *)maxDownloadErrorForType:(EDownloadType)aType;
 
 @end

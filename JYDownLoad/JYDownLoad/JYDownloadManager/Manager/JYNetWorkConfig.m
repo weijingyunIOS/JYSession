@@ -61,4 +61,8 @@
     [[ArtNetWorkService shared] removeDownloadManagerForType:aType];
 }
 
+- (NSString *)maxDownloadErrorForType:(EDownloadType)aType{
+    return [NSString stringWithFormat:@"已达最大下载数%tu",[self getMaxDownloadForType:aType]];
+}
+
 @end

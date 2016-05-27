@@ -64,8 +64,8 @@
     while ([[ArtNetWorkService shared] getVideoByVideoID:[NSString stringWithFormat:@"%tu",count]]) {
         count = random();
     }
-    aInfo.videoID = [NSString stringWithFormat:@"%tu",count + 1];
-    aInfo.videoDesc = [NSString stringWithFormat:@"第 %tu 视频",count + 1];
+    aInfo.videoID = [NSString stringWithFormat:@"%tu",count];
+    aInfo.videoDesc = [NSString stringWithFormat:@"第 %tu 视频",count];
     [aInfo saveToDB];
     [self reload];
 }

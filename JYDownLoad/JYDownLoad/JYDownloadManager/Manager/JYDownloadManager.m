@@ -43,7 +43,7 @@
         if (self.downloadDicM.count >= self.maxDownLoad) {
             if (aComplete) {
                 aContent.downLoadState = EDownloadStateWaiting;
-                NSString *errorString = [NSString stringWithFormat:@"已达最大下载数%tu",self.maxDownLoad];
+                NSString *errorString = [[JYNetWorkConfig shared] maxDownloadErrorForType:self.type];
                 NSError *aError = [NSError errorWithDomain:@"超过最大下载数" code:1 userInfo:@{@"NSLocalizedDescription" : errorString}];
                 [aContent saveToDB];
                 aComplete(aContent,aError);
